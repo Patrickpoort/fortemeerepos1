@@ -1,16 +1,25 @@
-<?php
-?>
+<?php include "HTML HEAD.php"; ?>
 
 <html>
+<<<<<<< HEAD
 <h1>
     Hello
 </h1>
 <p>Wat gaan we doen poorty</p>
 <p>poooooooooooooooootrzzz</p>
+=======
+<<<<<<< HEAD
+<body>
+
+<h1>Hello test enviroment</h1>
+
+
+
+
+</body>
+
+>>>>>>> origin/master
 </html>
-/**
- * Created by PhpStorm.
- * User: Stefan
- * Date: 04/01/2017
- * Time: 19:55
- */
+<?php include "footer.php"; ?>
+
+
