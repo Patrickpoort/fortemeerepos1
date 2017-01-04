@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: patrickpoort
- * Date: 04/01/2017
- * Time: 20:30
- */
+$db = "mysql:host=localhost;dbname=mydb;port=3306";
+$user = "root";
+
+$pass= "root";
+$pdo = new PDO($db, $user,$pass);
+
+
+

@@ -1,14 +1,15 @@
-<?php
-?>
+<?php include "HTML HEAD.php"; ?>
 
 <html>
-<h1>
-    Hello
-</h1>
+<body>
+
+<h1>Hello test enviroment</h1>
+
+
+
+
+</body>
 </html>
-/**
- * Created by PhpStorm.
- * User: Stefan
- * Date: 04/01/2017
- * Time: 19:55
- */
+<?php include "footer.php"; ?>
+
+
