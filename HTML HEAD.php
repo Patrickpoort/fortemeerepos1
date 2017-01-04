@@ -18,4 +18,5 @@
     <script src="../bootstrap-files/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+</html>
 <?php include "Navbar.php"; ?>
