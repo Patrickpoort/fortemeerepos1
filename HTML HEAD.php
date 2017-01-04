@@ -18,5 +18,9 @@
     <script src="../bootstrap-files/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<<<<<<< HEAD
 </html>
+=======
+
+>>>>>>> origin/master
 <?php include "Navbar.php"; ?>
