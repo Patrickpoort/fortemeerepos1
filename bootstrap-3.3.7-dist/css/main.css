@@ -1,0 +1,261 @@
+.topbar {
+    background-color: #176c48;
+    padding: 0;
+}
+
+.navbar{
+    color:white;
+}
+
+/*slider*/
+.slider{
+    width: 100%;
+}
+
+.carousel .item {
+    height: 350px;
+}
+
+.item img {
+    height: 350px;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+    -moz-transition: 2s all ease-in-out .1s;
+    -ms-transition: 2s all ease-in-out .1s;
+    -o-transition: 2s all ease-in-out .1s;
+    transition: 2s all ease-in-out .1s;
+}
+
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+    -moz-transition: 2s all ease-in-out .1s;
+    -ms-transition: 2s all ease-in-out .1s;
+    -o-transition: 2s all ease-in-out .1s;
+    transition: 2s all ease-in-out .1s;
+}
+
+.footerinfo ul li a {
+    color: white;
+}
+
+.footerinfo ul li a:hover {
+    color: #176c48;
+}
+
+.footer {
+    background-color: #176c48;
+    font-size: 1em;
+    color: white;
+
+}
+
+/* Registreer pagina */
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+#RegisButton{
+    background-color: #176c48;
+    max-width: 330px;
+
+}
+.regist-bericht{
+    text-align: center;
+}
+
+/*aanbodpagina*/
+.aanbod-wrapper {
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
+}
+
+.aanbod-sidebar-wrapper {
+    margin-left: -250px;
+    left: 250px;
+    width: 250px;
+    background: #CCC;
+    position: absolute;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
+}
+
+.aanbod-sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.aanbod-form-search {
+    box-sizing: border-box;
+    width: 230px;
+    margin: auto;
+
+
+}
+
+.aanbod-dropdown-merk {
+    box-sizing: border-box;
+    width: 230px;
+    margin: auto;
+
+}
+
+.aanbod-dropdown-bouwjaar {
+    box-sizing: border-box;
+    width: 230px;
+    margin: auto;
+
+}
+
+.aanbod-dropdown-onderdeel {
+    box-sizing: border-box;
+    width: 230px;
+    margin: auto;
+
+}
+
+.aanbod-search-button {
+    text-align: center;
+}
+
+.aanbod-filter-title {
+    text-align: center;
+}
+
+.col-md-2 {
+    border: 1px black solid;
+    margin: auto;
+}
+
+.col-md-7 {
+    border: 1px black solid;
+    margin: auto;
+}
+
+.aanbod-table-data {
+    height: 100px;
+}
+
+.aanbod-prijs {
+    font-size: 20px;
+    text-align: center;
+    border: 1px black solid;
+}
+
+.aanbod-image img {
+    width: 30px;
+    height: 30px;
+
+}
+
+/*itempage*/
+
+.boxlinks {
+    background-color: #e1e3e8;
+}
+
+.boxlinks td {
+    vertical-align: top;
+    text-align: left;
+    padding: 5px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+
+}
+
+.boxmidden .item-image img {
+    width: 457px;
+    height: 457px;
+    overflow: hidden;
+
+}
+
+/*winkelwagen*/
+
+.producten td {
+}
+
+.producten {
+    border-collapse: separate;
+    border-spacing: 10px;
+    background-color: #e2e4ea;
+    margin-right: 40px;
+
+}
+
+.producten th {
+    font-size: larger;
+}
+
+.overzichtdiv {
+    background-color: #e2e4ea;
+}
+
+.bestelknop {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.overzicht td {
+    padding: 15px;
+}
+
+.overzicht th {
+    padding: 15px;
+    font-size: large;
+}
+
+/* Login page */
+.myrow {
+    font-size: 0;
+}
+.myrow > * {
+    float: none;
+    display: inline-block;
+    font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
+}
+.myrow > *:last-child {
+    vertical-align: bottom;
+}
+.myrow p:last-child {
+    margin-bottom: 0; /* optional */
+}
