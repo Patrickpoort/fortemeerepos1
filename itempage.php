@@ -10,7 +10,8 @@ session_start();
 include("HTML HEAD.php");
 
 // database include
-include 'include/database.php';
+include 'database.php';
+$pdo = connecttodb();
 
 $productnummer = $_GET["rowid"];
 $stmt = $pdo->prepare("SELECT * FROM product WHERE productnummer = ?");
