@@ -1,12 +1,6 @@
 <?php include "HTML HEAD.php"; ?>
 
 <html>
-<<<<<<< HEAD
-<h1> Hello Guys
-</h1>
-
-
-=======
 <body>
 <header>
     <section class="slider">
@@ -63,7 +57,7 @@
     </div>
 
 </div>
->>>>>>> origin/master
+
 
 
 

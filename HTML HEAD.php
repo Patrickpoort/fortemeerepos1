@@ -20,9 +20,4 @@
 </head>
 
 </html>
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 <?php include "Navbar.php"; ?>
