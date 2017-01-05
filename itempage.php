@@ -13,6 +13,9 @@ include("HTML HEAD.php");
 include 'database.php';
 $pdo = connecttodb();
 
+if (!isset($_GET['rowid'])) {
+    echo "<h1>Geen item geselecteerd!</h1>";
+}
 $productnummer = $_GET["rowid"];
 $stmt = $pdo->prepare("SELECT * FROM product WHERE productnummer = ?");
 $stmt ->execute(array($productnummer));
@@ -28,20 +31,38 @@ $_SESSION['productnummer'] = $productnummer;
             <tr><td><h3>Kenmerken</h3></td></tr>
             <?php
             while ($row = $stmt->fetch()) {
-                $naam = $row["naam"];
-                $omschrijving = $row["omschrijving"];
+                if (isset($row['naam'])) {
+                    $naam = $row["naam"];
+                }
 
-                echo "<tr><td>productnummer:</td><td>" . $productnummer . "</td></tr>";
-                $bouwjaar = $row["bouwjaar"];
-                echo "<tr><td>bouwjaar:</td><td>" . $bouwjaar . "</td></tr>";
-                $merk = $row["merk"];
-                echo "<tr><td>merk:</td><td>" . $merk . "</td></tr>";
-                $gewicht = $row["gewicht"];
-                echo "<tr><td>gewicht:</td><td>" . $gewicht . "</td></tr>";
-                $type = $row["type"];
-                echo "<tr><td>type:</td><td>" . $type . "</td></tr>";
+                if (isset($row['omschrijving'])) {
+                    $omschrijving = $row["omschrijving"];
+                }
+
+                if (isset($productnummer)) {
+                    echo "<tr><td>productnummer:</td><td>" . $productnummer . "</td></tr>";
+                }
+
+                if (isset($row['bouwjaar'])) {
+                    $bouwjaar = $row["bouwjaar"];
+                    echo "<tr><td>bouwjaar:</td><td>" . $bouwjaar . "</td></tr>";
+                }
+
+                if (isset($row['merk'])) {
+                    $merk = $row["merk"];
+                    echo "<tr><td>merk:</td><td>" . $merk . "</td></tr>";
+                }
+
+                if (isset($row['gewicht'])) {
+                    $gewicht = $row["gewicht"];
+                    echo "<tr><td>gewicht:</td><td>" . $gewicht . "</td></tr>";
+                }
+
+                if (isset($row['type'])) {
+                    $type = $row["type"];
+                    echo "<tr><td>type:</td><td>" . $type . "</td></tr>";
+                }
                 $prijs = $row["prijs"];
-
             }
 
             ?>
