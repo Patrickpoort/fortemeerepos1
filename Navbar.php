@@ -19,7 +19,7 @@
     <!--auto-onderdelen -->
         <div class="nav-items navbar-left navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="../Algemeen/aanbodpagina.php">Auto-onderdelen</a></li>
+                <li><a href="aanbodpagina.php">Auto-onderdelen</a></li>
             </ul>
         </div>
 
@@ -36,7 +36,7 @@
                     print"<li><a href='registreren.php'><span>Registeren</span></a></li>";
                 }
                 ?>
-                <li><a href="../Algemeen/winkelwagen.php">Winkelmandje</a> </li>
+                <li><a href="winkelwagen.php">Winkelmandje</a> </li>
                 </ul>
         </div>
 
