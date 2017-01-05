@@ -50,7 +50,7 @@ $_SESSION['productnummer'] = $productnummer;
         <div class="col-md-5 boxmidden">
             <div class="item-image">
                 <?php
-                echo "<img src=\"img-" . $productnummer . ".png\">"
+                echo "<img src='images/img-" . $productnummer . ".jpg'>"
                 ?>
             </div>
 
