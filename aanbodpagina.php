@@ -8,7 +8,8 @@
         <title>Bootstrap 101 Template</title>
 
         <!-- Bootstrap -->
-        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
 
 
     </head>
@@ -18,7 +19,7 @@
 // database include
         include 'HTML HEAD.php';
         include 'database.php';
-        $pdo = connecttodb();
+        connecttodb();
 
 
         
@@ -144,9 +145,9 @@
                         
                         echo "<tr class=\"aanbod-table-data\">";
                         ?>
-                    <div class="container">
+                    <div class="container" class="aanbod-image">
                         <?php
-                        echo "<td class='col-md-2 aanbod-image'><img src='images\img-" . $productnummer . ".jpg'></td>";
+                        echo "<td class='col-md-2'><img src='images\img-" . $productnummer . ".jpg'></td>";
                         ?>
                 </div>
                 <?php
@@ -159,7 +160,7 @@
     </div>
 </div>
 
-<?php include("footer.php"); ?>
+<?php include("include/Footer.php"); ?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="css/https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
