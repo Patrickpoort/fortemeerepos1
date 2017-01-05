@@ -21,9 +21,6 @@
         include 'database.php';
         $pdo = connecttodb();
 
-
-        
-
         $query = "SELECT * FROM product";
         $temp_array = [];
         if (isset($_GET['submit'])) {
