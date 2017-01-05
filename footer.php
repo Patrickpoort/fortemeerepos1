@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
-        <p class="navbar-text">Stefan maakt de beste footers</p>
+        <p class="navbar-text"><a href="#">Contact</a></p>
         <p class="navbar-text">Buig voor de footer van Stefan</p>
     </div>
 </div>

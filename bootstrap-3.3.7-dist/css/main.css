@@ -9,6 +9,10 @@
     color:white;
 }
 
+.jumbotron{
+    background-image: url("http://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg");
+}
+
 /*slider*/
 .slider{
     width: 100%;
@@ -44,13 +48,13 @@
     transition: 2s all ease-in-out .1s;
 }
 
-#hometekst{
+/*hometekst{
     border: 2px solid black;
     padding: 13px;
     border-radius: 10px;
     box-shadow: 10px 10px 5px #888888;
 }
-
+*/
 .footerinfo ul li a {
      color: white;
  }
@@ -65,7 +69,6 @@
     color: white;
 
 }
-
 
 /* Registreer pagina */
 .form-signin {
