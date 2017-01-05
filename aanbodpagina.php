@@ -145,9 +145,9 @@
                         
                         echo "<tr class=\"aanbod-table-data\">";
                         ?>
-                    <div class="container" class="aanbod-image">
+                    <div class="container">
                         <?php
-                        echo "<td class='col-md-2'><img src='images\img-" . $productnummer . ".jpg'></td>";
+                        echo "<td class='col-md-2 aanbod-image'><img src='images\img-" . $productnummer . ".jpg'></td>";
                         ?>
                 </div>
                 <?php
