@@ -19,7 +19,7 @@
 // database include
         include 'HTML HEAD.php';
         include 'database.php';
-        connecttodb();
+        $pdo = connecttodb();
 
 
         
