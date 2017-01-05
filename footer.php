@@ -1,37 +1,9 @@
-<div class="footer navbar navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-md-offset-1">
-                <ul class="list-unstyled">
-                    <li>AutoQuest</li>
-                    <li>Adres</li>
-                    <li>Telefoonnummer</li>
-                    <li>Postcode</li>
-                    <li>KVK Nummer</li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-md-offset-1">
-                <ul class="list-unstyled">
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-md-offset-1">
-                <ul class="list-unstyled">
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                    <li>Voorbeeld</li>
-                </ul>
-            </div>
-        </div>
+<div class="navbar navbar-default navbar-fixed-bottom" id="footer">
+    <div class="container">
+        <p class="navbar-text">Stefan maakt de beste footers</p>
+        <p class="navbar-text">Buig voor de footer van Stefan</p>
     </div>
 </div>
-
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

@@ -1,3 +1,5 @@
+
+
 .topbar {
     background-color: #176c48;
     padding: 0;
@@ -11,13 +13,17 @@
 .slider{
     width: 100%;
 }
-
+#carousel-example {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
 .carousel .item {
     height: 350px;
 }
 
 .item img {
-    height: 350px;
+    height: 3500px;
 }
 
 .fade-carousel .carousel-inner .item .hero {
@@ -38,20 +44,28 @@
     transition: 2s all ease-in-out .1s;
 }
 
-.footerinfo ul li a {
-    color: white;
+#hometekst{
+    border: 2px solid black;
+    padding: 13px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #888888;
 }
+
+.footerinfo ul li a {
+     color: white;
+ }
 
 .footerinfo ul li a:hover {
     color: #176c48;
 }
 
-.footer {
+#footer {
     background-color: #176c48;
     font-size: 1em;
     color: white;
 
 }
+
 
 /* Registreer pagina */
 .form-signin {
