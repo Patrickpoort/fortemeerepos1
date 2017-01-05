@@ -30,7 +30,7 @@
             . "<form class='login-register' action='#'>"
             . "<h2>Nog geen account?</h2>"
             // registreer button.
-            . "<a href='#' class=\"btn btn-lg btn-primary btn-fixed\" id=\"RegisButton\" role=\"button\">Registreren</a>"
+            . "<a href='registreren.php' class=\"btn btn-lg btn-primary btn-fixed\" id=\"RegisButton\" role=\"button\">Registreren</a>"
             . "</form>"
             . "<form class='login-register' action='#'>"
             . "<h2>Wachtwoord vergeten?</h2>"
