@@ -17,6 +17,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $passw = ($_POST['wachtwoord']);
     $pass_rep = ($_POST['wachtwoord2']);
     $rechten = 1;
+   
+    
 
     $query = $pdo->prepare("SELECT emailadres FROM account WHERE emailadres = :emailadres");
     $query->execute(array(':emailadres' => $email));
@@ -72,11 +74,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     else{
+        
         $regist_array[0] = $_POST['voornaam'];
         $regist_array[1] = $_POST['achternaam'];
         $regist_array[2] = $_POST['emailadres'];
-        $regist_array[3] = $_POST['wachtwoord'];
+        $regist_array[3] = hash('SHA256' ,($_POST['wachtwoord']));
         $regist_array[4] = 1;
+     
 
         $query = "INSERT INTO account (voornaam, achternaam, emailadres, wachtwoord, rechten) VALUES (?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($query);
