@@ -41,26 +41,6 @@ if (isset($productnummer)) {
     $_SESSION['winkelwagen'][] = $winkelwagen;
 }
 
-//$bestelnummer =+ 1;
-//$emailadres = "testklant@gmail.com";
-//$productnummer = $_GET['productnummer'];
-//$aantal = $_GET['aantal'];
-//$datum = date("Y-m-d H:i:s");
-//$betaald = 0;
-//
-
-//$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer,
-//aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-//
-//$stmt->execute(array(
-//    "bestelnummer" => $bestelnummer,
-//    "email" => $emailadres,
-//    "pnummer" => $productnummer,
-//    "aantal" => $aantal,
-//    "datum" => $datum,
-//    "betaald" => $betaald,
-//));
-
 ?>
 
 <div class="container">
@@ -84,9 +64,7 @@ if (isset($productnummer)) {
                     echo "</tr>";
                 }
             }
-
             ?>
-
 
         </table>
         <div class="col-md-4 overzichtdiv">
@@ -101,12 +79,12 @@ if (isset($productnummer)) {
                     ?>
                 </tr>
             </table>
-            <form class="bestelknop">
+
+<!--            if logged in-->
+            <form class="bestelknop" action="bestellen.php">
                 <button>Bestellen</button>
             </form>
         </div>
-
-
     </div>
 </div>
 </body>
