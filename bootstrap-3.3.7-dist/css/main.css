@@ -261,6 +261,18 @@
     font-size: large;
 }
 
+/* Order afronden page */
+.afrondknop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.winkelwagenknop {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}
+
 /* Login page */
 .myrow {
     font-size: 0;
