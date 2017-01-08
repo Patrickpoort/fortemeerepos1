@@ -19,11 +19,9 @@
     <!--apanelnavbar-->
         <div class="nav-items navbar-left navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#">Link</a> </li>
-                <li><a href="klanten.php">Beheer Klanten</a> </li>
-                <li><a href="producten.php">Beheer Producten</a> </li>
-                <li><a href="#">Link</a> </li>
-                <li><a href="#">Link</a> </li>
+                <li><a href="klanten.php">Klanten</a> </li>
+                <li><a href="producten.php">Producten</a> </li>
+                <li><a href="index.php">Homepagina</a> </li>
             </ul>
         </div>
 

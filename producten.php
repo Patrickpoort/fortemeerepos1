@@ -104,7 +104,7 @@
                     $stmt->execute([$_POST['productnummer']]);
                 }
                 //footer
-                include("../include/footer.php");
+                include("footer.php");
                 ?>
             </table>
         </div>

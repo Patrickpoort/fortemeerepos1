@@ -31,7 +31,6 @@
 
         //cookies
         include("cookies.php");
-        beheerder($rechten->rechten);
         
         //adminpanel navbar
         include("apanelnav.php");
@@ -105,7 +104,7 @@
                     $stmt->execute([$_POST['emailadres']]);
                 }
                 //footer
-                include("../include/footer.php");
+                include("footer.php");
                 ?>
             </table>
         </div>
