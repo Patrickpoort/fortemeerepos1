@@ -74,6 +74,10 @@
         if (!isset($_POST['submit'])) {
             print $form;
         }
+        
+        if (isset($_SESSION['emailadres'])) {
+            header("location:index.php");
+        }else {}
 
         function checkLogin() {
             global $pdo;

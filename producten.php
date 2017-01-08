@@ -49,9 +49,6 @@
                     <th>Formule</th>
                     <th>Gewicht</th>
                     <th>Prijs</th>
-                    <th>Toevoegen</th>
-                    <th>Opslaan</th>
-                    <th>Delete</th>
                 </tr>
                 <?php
                 $query = "select * from Product order by productnummer asc";
@@ -83,16 +80,27 @@
                     print "<td>" . "<input type='text' name='formule' value='$formule'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='geiwcht' value='$geiwcht'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
-                    print "<td>" . "<input type='submit' value='toevoegen' name='toevoegen'></input>" . "</td>";
                     print "<td>" . "<input type='submit' value='opslaan' name='opslaan'></input>" . "</td>";
                     print "<td>" . "<input type='submit' value='delete' name='delete'></input>" . "</td>";
+                    print "</tr></tr>";
+                    print "<td>" . "<input type='text' name='productnummer'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='naam'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='categorienaam'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='omschrijving'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='merk'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='type'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='bouwjaar'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='formule'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='geiwcht'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='prijs'</input>" . "</td>";
+                    print "<td>" . "<input type='submit' value='toevoegen' name='toevoegen'></input>" . "</td>";
                     print "</tr>";
                     print "</form>";
                 }
 
                 if (isset($_POST['toevoegen'])) {
                     $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
+                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
                 }
                 
                 if (isset($_POST['opslaan'])) {

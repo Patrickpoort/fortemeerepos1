@@ -28,10 +28,8 @@
         <?php      
         //database connectie
         include("include/database.php");
-
         //cookies
         include("cookies.php");
-        
         //adminpanel navbar
         include("apanelnav.php");
 

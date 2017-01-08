@@ -3,17 +3,17 @@
 include("include/database.php");
 
 if (isset($_SESSION['emailadres'])) {
-   $email = $_SESSION['emailadres'];
+    $email = $_SESSION['emailadres'];
 
-$query = "select * from Account where emailadres = :email";
-$stmt = $pdo->prepare($query);
-$stmt->execute(array('email'=>$email));
+    $query = "select * from Account where emailadres = :email";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute(array('email' => $email));
 
-if (isset($_GET['rechten']) == 3) {
-            print "<p><a href='klanten.php'>" . "Adminpanel" . "</a></p>";
-        } 
+    if (isset($_GET['rechten']) == 3) {
+        print "<p><a href='klanten.php'>Adminpanel</a></p>";
+    }
 } else {
-    print"niks";
+    
 }
 ?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">

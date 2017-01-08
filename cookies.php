@@ -19,7 +19,7 @@ session_start();
 function getRole() { //zoekt rechten van gebruiker
     global $pdo;
     $rechten = 0; // Return 0 voor gast.
-    if (isset($_SESSION['logged_in']) AND isset($_SESSION['emailadres']) AND $_SESSION['logged_in'] == true AND ! empty($_SESSION['emailadres'])) {
+    if (isset($_SESSION['emailadres'])) {
         $query = $pdo->prepare("SELECT * FROM Account WHERE emailadres = :mail");
         $query->execute(array(':mail' => $_SESSION['emailadres']));
         $user = $query->fetch(PDO::FETCH_OBJ);
