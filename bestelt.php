@@ -1,3 +1,10 @@
+<!--
+    MIT License
+
+    Copyright (c) 2016 Edwin van Dasselaar
+
+    see LICENSE file for more information
+-->
 <?php
 /*** Created by PhpStorm.*/
 
@@ -32,6 +39,14 @@ include "database.php";
 		<ul>
 			Email: rene@autoquest.nl
 		</ul>
+		<form class="afrondknop" action="index.php">
+			<button>Terug naar Home</button>
+			<br>
+		</form>
+		<form class="afrondknop" action="aanbodpagina.php">
+			<button>Meer producten bekijken.</button>
+			<br>
+		</form>
 	</div>
 </div>
 

@@ -1,3 +1,10 @@
+<!--
+    MIT License
+
+    Copyright (c) 2016 Edwin van Dasselaar
+
+    see LICENSE file for more information
+-->
 <?php
 /**
  * Created by PhpStorm.
