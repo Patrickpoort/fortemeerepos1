@@ -1,6 +1,19 @@
-<?php include "HTML HEAD.php"; ?>
+<?php
+//cookies.
+include("cookies.php");
+
+//navigation bar.
+include("Navbar.php");
+?>
 
 <html>
+
+<!-- Bootstrap core CSS -->
+<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
+
 <body>
 <header>
     <section class="slider">
