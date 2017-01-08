@@ -49,63 +49,6 @@
             print $form;
         }
 
-        //functie welke rol krijgt welke gebruiker.
-        function getRol() { //geef rol 1 aan klanten.
-            global $pdo;
-            $rol = 0; // Geef waarde 0 voor gast.
-            if (isset($_SESSION['logged_in']) AND isset($_SESSION['emailadres']) AND $_SESSION['logged_in'] == true AND ! empty($_SESSION['emailadres'])) {
-                $query = $pdo->prepare("SELECT * FROM emailadres WHERE emailadres = :email");
-                $query->execute(array(':email' => $_SESSION['emailadres']));
-                $gebruiker = $query->fetch(PDO::FETCH_OBJ);
-
-                //Geef waarde 1 aan klant.
-                if ($gebruiker->rol == 1) {
-                    $rol = 1;
-                }
-                //Geef waarde 2 aan medewerker.
-                elseif ($gebruiker->rol == 2) {
-                    $rol = 2;
-                }
-                //Geef waarde 3 aan admin.
-                elseif ($gebruiker->rol == 3) {
-                    $rol = 3;
-                }
-            }
-            return $rol;
-        }
-
-// Redirect gebruikers naar index pagina.
-        function userExit() {
-            if (getRol() <= 1) {
-                header('Location: /');
-                exit;
-            }
-        }
-
-// Redirect gast naar login page.
-        function guestExit() {
-            if (getRol() == 0) {
-                header('Location: registreren.php');
-                exit;
-            }
-        }
-
-// Redirect iedereen behalve medewerker.
-        function medewerkerOnly($rol) {
-            if (getRol() < 2) {
-                header('Location: /');
-                exit;
-            }
-        }
-
-// Redirect iedereen behalve admin.
-        function adminOnly($rol) {
-            if (getRol() < 3) {
-                header('Location: /adminpanel/overview.php');
-                exit;
-            }
-        }
-
         function checkLogin() {
             global $pdo;
             // checked submit knop, en of waardes zijn ingevuld. Anders melding gebruikersnaam of wachtwoord is incorrect.
