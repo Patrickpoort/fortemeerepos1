@@ -40,13 +40,7 @@
             </ul>
         </div>
 
-        <!--zoekbar-->
-        <form class="navbar-form navbar-right navbar-collapse collapse" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Zoek">
-            </div>
-        </form>
-
+        
 
 
     </div>

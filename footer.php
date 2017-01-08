@@ -13,7 +13,7 @@ if (isset($_SESSION['emailadres'])) {
         print "<p><a href='klanten.php'>Adminpanel</a></p>";
     }
 } else {
-    
+
 }
 ?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">

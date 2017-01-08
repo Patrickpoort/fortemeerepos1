@@ -1,7 +1,7 @@
 <?php
 
 //database connectie
-include("database.php");
+include("include/database.php");
 
 // Set cookie for cart.
 if (!isset($_COOKIE['UID'])) {
