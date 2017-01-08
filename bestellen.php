@@ -10,7 +10,7 @@ session_start();
 
 include("HTML HEAD.php");
 include "database.php";
-$pdo = connecttodb();
+
 
 ?>
 <div class="container">
@@ -66,22 +66,22 @@ $pdo = connecttodb();
 
 
 <?php
-$bestelnummer =+ 1;
-$emailadres = $_GET[$_SESSION["emailadres"]];
-$betaald = 0;
+//	$bestelnummer =+ 1;
+//	$emailadres = $_GET[$_SESSION["emailadres"]];
+//	$betaald = 0;
 
 
 
 
-$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-$stmt->execute(array(
-	"bestelnummer" => $bestelnummer,
-	"email" => $emailadres,
-	"pnummer" => $productnummer,
-	"aantal" => $aantal,
-	"datum" => $datum,
-	"betaald" => $betaald,
-));
+//	$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
+//	$stmt->execute(array(
+//	"bestelnummer" => $bestelnummer,
+//	"email" => $emailadres,
+//	"pnummer" => $productnummer,
+//	"aantal" => $aantal,
+//	"datum" => $datum,
+//	"betaald" => $betaald,
+//	));
 
 
 

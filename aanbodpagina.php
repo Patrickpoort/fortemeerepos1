@@ -11,8 +11,8 @@
 // database include
         include 'HTML HEAD.php';
 
-        include 'database.php';
-        $pdo= connecttodb();
+        require_once 'database.php';
+
 
         $query = "SELECT * FROM product";
         $temp_array = [];

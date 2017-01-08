@@ -27,10 +27,10 @@
         <?php
         //database connectie.
         include("database.php");
-        $pdo= connecttodb();
+
 
         //cookies.
-        include("cookies.php");
+        include("include/cookies.php");
 
         checkLogin();
 
@@ -68,7 +68,7 @@
             . "</div>"
             . "</div>";
         //footer
-        include("Footer.php");
+        include("footer.php");
 
 
 

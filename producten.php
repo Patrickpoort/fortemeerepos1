@@ -29,7 +29,7 @@
         <?php
         //database connectie
         include("database.php");
-        $pdo= connecttodb();
+
         //cookies
         include("cookies.php");
 

@@ -1,8 +1,8 @@
 <?php
 
 //database connectie
-include("../database.php");
-$pdo= connecttodb();
+include("database.php");
+
 
 // Set cookie for cart.
 if (!isset($_COOKIE['UID'])) {

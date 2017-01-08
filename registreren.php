@@ -4,7 +4,7 @@ include 'HTML HEAD.php';
 
 //Database.
 include 'database.php';
-$pdo= connecttodb();
+
 
 
 

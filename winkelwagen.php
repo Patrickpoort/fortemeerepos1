@@ -3,8 +3,8 @@ session_start();
 
 include("HTML HEAD.php");
 //Database.
-include "database.php";
-$pdo = connecttodb();
+require_once ("database.php");
+
 
 ?>
 
