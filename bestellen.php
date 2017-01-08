@@ -66,27 +66,6 @@ $pdo = connecttodb();
 
 
 <?php
-$bestelnummer =+ 1;
-$emailadres = $_GET[$_SESSION["emailadres"]];
-$betaald = 0;
-
-for($_SESSION["winkelwagen"]) {
-	$productnummer = $_GET['productnummer'];
-	$aantal = $_GET['aantal'];
-	$datum = date("Y-m-d H:i");
-}
-
-
-$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-$stmt->execute(array(
-    	"bestelnummer" => $bestelnummer,
-    	"email" => $emailadres,
-	  	"pnummer" => $productnummer,
-		"aantal" => $aantal,
-		"datum" => $datum,
-		"betaald" => $betaald,
-));
-
 
 
 ?>
