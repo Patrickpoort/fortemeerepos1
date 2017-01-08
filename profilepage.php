@@ -18,10 +18,10 @@
         <title>Gebruikers profiel</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="css/main.css" rel="stylesheet">
+        <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
 
     </head>
     <body>
@@ -135,8 +135,8 @@
         </div>
     </div>
 <?php
-//footer tijdelijk als comment, footer staat in de weg, kan niet scrollen.
-//include("include/footer.php");
+//footer 
+include("footer.php");
 ?>
 </body>
 </html>
