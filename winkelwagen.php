@@ -16,7 +16,7 @@ $subtotaal = 0;
 $totaal = 0;
 
 if (isset($_GET["leeg"])) {
-    session_destroy();
+    unset($_SESSION["winkelwagen"]);
 }
 
 if (isset($_GET['productnummer'])) {

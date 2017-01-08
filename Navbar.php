@@ -36,7 +36,7 @@
                     print"<li><a href='registreren.php'><span>Registeren</span></a></li>";
                 }
                 ?>  
-                <li><a href="#">Winkelmandje</a> </li>
+                <li><a href="winkelwagen.php">Winkelmandje</a> </li>
             </ul>
         </div>
 
