@@ -18,26 +18,24 @@
         <title>Admin Panel</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="../css/main.css" rel="stylesheet">
+        <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
 
     </head>
     <body>
         <?php      
-        
         //database connectie
-        include("../include/database.php");
+        include("include/database.php");
 
         //cookies
-        include("../include/cookies.php");
-        
+        include("cookies.php");
         beheerder($rechten->rechten);
-
-        //adminpanel navbar
-        include("../include/apanelnav.php");
         
+        //adminpanel navbar
+        include("apanelnav.php");
+
         ?>
         <div class="klanten-container">
             <table class="klanten-overview">
