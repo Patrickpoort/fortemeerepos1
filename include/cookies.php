@@ -1,8 +1,9 @@
 <?php
 
 //database connectie
-include("database.php");
+include("../database.php");
 $pdo= connecttodb();
+
 // Set cookie for cart.
 if (!isset($_COOKIE['UID'])) {
     setcookie('UID', uniqid(), time() + (86400 * 30), '/'); // 86400 = 1 day
@@ -37,7 +38,7 @@ function getRole() { //zoekt rechten van gebruiker
 
 function gebruiker() { // Redirect gebruikers en gasten naar login scherm.
     if (getRole() >= 1) {
-        header('Location: ');
+        header('Location: profilepage.php');
         exit;
     }
 }

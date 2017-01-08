@@ -27,7 +27,7 @@
     <body>
         <?php
         //database connectie
-        include("include/database.php");
+        include("database.php");
         $pdo= connecttodb();
         //cookies
         include("include/cookies.php");

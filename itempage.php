@@ -11,7 +11,7 @@ include("HTML HEAD.php");
 
 // database include
 
-include 'include/database.php';
+include 'database.php';
 $pdo= connecttodb();
 
 if (!isset($_GET['rowid'])) {

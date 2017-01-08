@@ -2,6 +2,11 @@
 //cookies.
 include("cookies.php");
 
+//database.
+include("database.php");
+$pdo = connecttodb();
+
+
 //navigation bar.
 include("Navbar.php");
 ?>

@@ -2,8 +2,8 @@
 //navigatiebar
 include 'HTML HEAD.php';
 
-
-include 'include/database.php';
+//Database.
+include 'database.php';
 $pdo= connecttodb();
 
 

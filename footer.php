@@ -1,7 +1,8 @@
 <?php
 //database connectie.
-include("include/database.php");
+include("database.php");
 $pdo= connecttodb();
+
 if (isset($_SESSION['emailadres'])) {
 
 
