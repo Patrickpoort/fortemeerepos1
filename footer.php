@@ -2,21 +2,24 @@
 //database connectie.
 include("include/database.php");
 
-$query = "select * from Account where rechten = 3";
+if (isset($_SESSION['emailadres'])) {
+   $email = $_SESSION['emailadres'];
+
+$query = "select * from Account where emailadres = :email";
 $stmt = $pdo->prepare($query);
-$stmt->execute();
+$stmt->execute(array('email'=>$email));
+
+if (isset($_GET['rechten']) == 3) {
+            print "<p><a href='klanten.php'>" . "Adminpanel" . "</a></p>";
+        } 
+} else {
+    print"niks";
+}
 ?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
         <p class="navbar-text"><a href="#">Contact</a></p>
         <p class="navbar-text">Autoquest copyright 2017, all rights reserved</p>
-        <?php
-        if (isset($_SESSION['rechten']) == 3 AND ! empty($_SESSION['rechten'])) {
-            print "<p><a href='klanten.php'></a></p>";
-        } else {
-            print "niks";
-        }
-        ?>
     </div>
 </div>
 <!-- Bootstrap core JavaScript
