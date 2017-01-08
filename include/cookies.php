@@ -2,7 +2,7 @@
 
 //database connectie
 include("database.php");
-
+$pdo= connecttodb();
 // Set cookie for cart.
 if (!isset($_COOKIE['UID'])) {
     setcookie('UID', uniqid(), time() + (86400 * 30), '/'); // 86400 = 1 day
