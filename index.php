@@ -2,6 +2,7 @@
 //cookies.
 include("cookies.php");
 
+require ("include/database.php");
 //navigation bar.
 include("Navbar.php");
 ?>

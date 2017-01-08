@@ -2,7 +2,7 @@
 //navigatiebar
 include 'HTML HEAD.php';
 
-include 'database.php';
+include 'include/database.php';
 $pdo = connecttodb();
 
 $regist_array   = [];
