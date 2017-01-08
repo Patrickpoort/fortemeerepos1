@@ -10,8 +10,8 @@ session_start();
 include("HTML HEAD.php");
 
 // database include
-include 'database.php';
-$pdo = connecttodb();
+include 'include/database.php';
+
 
 if (!isset($_GET['rowid'])) {
     echo "<h1>Geen item geselecteerd!</h1>";

@@ -9,8 +9,8 @@
 session_start();
 
 include("HTML HEAD.php");
-include "database.php";
-$pdo = connecttodb();
+include "include/database.php";
+
 
 ?>
 <div class="container">

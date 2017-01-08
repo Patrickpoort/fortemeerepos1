@@ -2,8 +2,8 @@
 //navigatiebar
 include 'HTML HEAD.php';
 
-include 'database.php';
-$pdo = connecttodb();
+include 'include/database.php';
+
 
 $regist_array   = [];
 $errors         = [];

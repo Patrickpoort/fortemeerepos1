@@ -3,13 +3,13 @@
 include("include/database.php");
 
 if (isset($_SESSION['emailadres'])) {
-    $email = $_SESSION['emailadres'];
 
-    $query = "select * from Account where emailadres = :email";
+
+    $query = "select * from Account where rechten = 3";
     $stmt = $pdo->prepare($query);
-    $stmt->execute(array('email' => $email));
+    $stmt->execute();
 
-    if (isset($_GET['rechten']) == 3) {
+    if (isset($_SESSION['rechten']) == 3) {
         print "<p><a href='klanten.php'>Adminpanel</a></p>";
     }
 } else {
