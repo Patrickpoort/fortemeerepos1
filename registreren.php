@@ -3,7 +3,7 @@
 include 'HTML HEAD.php';
 
 include 'database.php';
-$pdo = connecttodb();
+
 
 $regist_array   = [];
 $errors         = [];

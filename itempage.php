@@ -11,7 +11,7 @@ include("HTML HEAD.php");
 
 // database include
 include 'database.php';
-$pdo = connecttodb();
+
 
 if (!isset($_GET['rowid'])) {
     echo "<h1>Geen item geselecteerd!</h1>";

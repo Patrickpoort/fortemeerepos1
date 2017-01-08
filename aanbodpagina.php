@@ -19,7 +19,7 @@
 // database include
         include 'HTML HEAD.php';
         include 'database.php';
-        $pdo = connecttodb();
+        
 
         $query = "SELECT * FROM product";
         $temp_array = [];
