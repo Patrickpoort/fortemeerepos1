@@ -10,10 +10,9 @@ $stmt = $pdo->prepare($query);
 $stmt->execute(array('email'=>$email));
 
 if (isset($_GET['rechten']) == 3) {
-            print "<p><a href='klanten.php'>" . "Adminpanel" . "</a></p>";
+            print "<p><a href='klanten.php'>Adminpanel</a></p>";
         } 
 } else {
-    print"niks";
 }
 ?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
