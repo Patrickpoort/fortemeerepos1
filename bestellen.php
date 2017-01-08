@@ -94,7 +94,7 @@ $stmt->execute(array(
 	<button>Bestelling definitief afronden</button>
 	<br>
 </form>
-
+<?php include "footer.php"; ?>
 
 //-->$winkelwagen = array(
 //	'productnummer' => $productnummer,

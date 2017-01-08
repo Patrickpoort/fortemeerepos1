@@ -49,7 +49,7 @@ $pdo = connecttodb();
 
 </html>
 
-
+<?php include "footer.php"; ?>
 
 
 
