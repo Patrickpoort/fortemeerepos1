@@ -1,7 +1,7 @@
 <?php
 
 //database connectie
-include("include/database.php");
+include("database.php");
 
 // Set cookie for cart.
 if (!isset($_COOKIE['UID'])) {
@@ -37,27 +37,27 @@ function getRole() { //zoekt rechten van gebruiker
 
 function gebruiker() { // Redirect gebruikers en gasten naar login scherm.
     if (getRole() >= 1) {
-        header('Location: profilepage.php');
+        header('Location: ');
         exit;
     }
 }
 
 function gast() { // Redirect gasten naar login scherm.
     if (getRole() == 0) {
-        header('Location: login.php');
+        header('Location: ');
         exit;
     }
 }
 
 function medewerker($rechten) { // Redirect iedereen behalve medewerker en beheerder.
-    if (getRole() == 2) {
-        header('Location: index.php');
+    if (getRole() < 2) {
+        header('Location: ');
         exit;
     }
 }
 
 function beheerder($rechten) { // Redirect iedereen behalve beheerder.
-    if (getRole() == 3) {
+    if (getRole() < 3) {
         header('Location: ');
         exit;
     }
