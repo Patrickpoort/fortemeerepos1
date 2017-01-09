@@ -31,8 +31,6 @@
 //cookies
     include("cookies.php");
 
-    print ($_SESSION['rechten']);
-
     if ($_SESSION['rechten'] < 3) {
         print 'Geen toegang';
     } else {
