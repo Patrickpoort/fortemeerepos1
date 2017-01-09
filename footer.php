@@ -2,30 +2,45 @@
 //database connectie.
 include("database.php");
 
-include ("include/cookies.php");
 
 
 
 
-$email = $_SESSION['emailadres'];
-$query = "SELECT * FROM account WHERE emailadres = :email";
-$stmt = $pdo->prepare($query);
-$stmt->execute(array('email'=>$email));
-
-while ($row = $stmt->fetch()) {
-    $rechten = $row ['rechten'];
-    print_r ($row);
-}
+//$sql = "SELECT rechten FROM Account";
+//$stmt = $pdo->prepare($sql);
+//$stmt->execute();
+//$result = mysql_query($sql); 
+//$user = mysql_fetch_array($result);
+//$_SESSION['emailadres'] = $user['emailadres'];
+//$_SESSION['rechten'] = $user['rechten'];
 
 
+//if ($_SESSION['rechten'] == 2) {
+//    print "doei";
+//}
+//if ($_SESSION['rechten'] == 3) {
+//    print "hoi";
+//} else {
+//    Print "";
+//}
 
 
 
-
-
-//if($_SESSION['rechten'] == 3) {
- //   print "<a href "
-
+//$user is ingelogde gebruiker, query zoekt naar gebruiker in database.
+//$email = $_SESSION['emailadres'];
+//$query = 'select * from Account where emailadres = :email';
+//$stmt = $pdo->prepare($query);
+// Leest alleen onderstaande variable.
+//$stmt->setFetchMode(PDO::FETCH_ASSOC);
+// Verwijzing naar gebruiker.
+//$stmt->execute(array('email' => $email));
+//while ($row = $stmt->fetch()) {
+//  $rechten = $row["rechten"];
+//print $rechten;
+//}
+//if ($_SESSION['rechten'] == 3) {
+//    print "<a href "
+//}
 ?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
