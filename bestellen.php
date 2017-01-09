@@ -98,7 +98,7 @@ include "database.php";
 	<br>
 </form>
 <?php include "footer.php"; ?>
-
+<?php
 //-->$winkelwagen = array(
 //	'productnummer' => $productnummer,
 //	'prijs' => $prijs,
@@ -128,7 +128,7 @@ include "database.php";
 //	));
 
 
-?>
+
 
 //$bestelnummer =+ 1;
 //$emailadres = "testklant@gmail.com";
@@ -149,3 +149,4 @@ include "database.php";
 //    "datum" => $datum,
 //    "betaald" => $betaald,
 //));
+?>

@@ -32,8 +32,8 @@
         //cookies
         include("include/cookies.php");
 
-        //adminpanel navbar
-        include("include/navigation.php");
+        //navbar
+        include("Navbar.php");
         ?>
 
         <div class="container">
