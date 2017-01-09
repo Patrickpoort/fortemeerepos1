@@ -2,6 +2,36 @@
 //database connectie.
 include("database.php");
 
+include ("include/cookies.php");
+
+
+
+
+$email = $_SESSION['emailadres'];
+$query = "SELECT * FROM account WHERE emailadres = :email";
+$stmt = $pdo->prepare($query);
+$stmt->execute(array('email'=>$email));
+
+while ($row = $stmt->fetch()) {
+    $rechten = $row ['rechten'];
+    print_r ($row);
+}
+
+
+
+
+
+
+
+//if($_SESSION['rechten'] == 3) {
+ //   print "<a href "
+
+
+}
+
+
+
+
 
 
 ?>
