@@ -26,14 +26,6 @@ while ($row = $stmt->fetch()) {
 //if($_SESSION['rechten'] == 3) {
  //   print "<a href "
 
-
-}
-
-
-
-
-
-
 ?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
