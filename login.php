@@ -76,9 +76,9 @@
             print $form;
         }
         
-        if (isset($_SESSION['emailadres'])) {
-            header("location:index.php");
-        }else {}
+       // if (isset($_SESSION['emailadres'])) {
+        //    header("location:index.php");
+        //}else {}
 
         function checkLogin() {
             global $pdo;
@@ -87,12 +87,14 @@
                 $user = $_POST['emailadres'];
                 $pass = $_POST['pass'];
                 // checked database op ingevoerde waardes.
-                $sql2 = "SELECT emailadres FROM account WHERE wachtwoord='" . $pass . "' AND emailadres='" . $user . "'";
+                $sql2 = "SELECT emailadres, rechten FROM account WHERE wachtwoord='" . $pass . "' AND emailadres='" . $user . "'";
 
                 if ($res = $pdo->query($sql2)) {
                     if ($res->rowCount() > 0) {
-
+                        $result = $res->fetch(PDO::FETCH_ASSOC);
+                        $_SESSION['rechten'] = $result["rechten"];
                         $_SESSION['emailadres'] = $user;
+                        print ($result["rechten"]);
 
                     } else {
                         print "Gebruikersnaam of wachtwoord is incorrect! <br>";

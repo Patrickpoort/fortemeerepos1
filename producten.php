@@ -25,98 +25,105 @@
         <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
 
     </head>
-    <body>
-        <?php
-        //database connectie
-        include("database.php");
+    <?php
+//database connectie
+    include("database.php");
+//cookies
+    include("cookies.php");
 
-        //cookies
-        include("cookies.php");
+    print ($_SESSION['rechten']);
 
+    if ($_SESSION['rechten'] < 3) {
+        print 'Geen toegang';
+    } else {
         //adminpanel navbar
         include("apanelnav.php");
         ?>
-        <div class="klanten-container">
-            <table class="klanten-overview">
-                <tr>
-                    <th>Productnummer</th>
-                    <th>Naam</th>
-                    <th>Categorie</th>
-                    <th>Omschrijving</th>
-                    <th>Merk</th>
-                    <th>Type</th>
-                    <th>Bouwjaar</th>
-                    <th>Formule</th>
-                    <th>Gewicht</th>
-                    <th>Prijs</th>
-                </tr>
-                <?php
-                $query = "select * from Product order by productnummer asc";
+        <body>
+            <div class="klanten-container">
+                <table class="klanten-overview">
+                    <tr>
+                        <th>Productnummer</th>
+                        <th>Naam</th>
+                        <th>Categorie</th>
+                        <th>Omschrijving</th>
+                        <th>Merk</th>
+                        <th>Type</th>
+                        <th>Bouwjaar</th>
+                        <th>Formule</th>
+                        <th>Gewicht</th>
+                        <th>Prijs</th>
+                    </tr>
+                    <?php
+                    $query = "select * from Product order by productnummer asc";
 
-                $stmt = $pdo->prepare($query);
-                $stmt->execute();
+                    $stmt = $pdo->prepare($query);
+                    $stmt->execute();
 
-                while ($row = $stmt->fetch()) {
-                    $productnummer = $row["productnummer"];
-                    $naam = $row["naam"];
-                    $categorienaam = $row["categorienaam"];
-                    $omschrijving = $row["omschrijving"];
-                    $merk = $row["merk"];
-                    $type = $row["type"];
-                    $bouwjaar = $row["bouwjaar"];
-                    $formule = $row["formule"];
-                    $geiwcht = $row["geiwcht"];
-                    $prijs = $row["prijs"];
-                    
-                    print "<form method='POST'>";
-                    print "<tr>";
-                    print "<td>" . "<input type='text' name='productnummer' value='$productnummer'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='naam' value='$naam'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='omschrijving' value='$omschrijving'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='merk' value='$merk'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='formule' value='$formule'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='geiwcht' value='$geiwcht'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
-                    print "<td>" . "<input type='submit' value='opslaan' name='opslaan'></input>" . "</td>";
-                    print "<td>" . "<input type='submit' value='delete' name='delete'></input>" . "</td>";
-                    print "</tr></tr>";
-                    print "<td>" . "<input type='text' name='productnummer'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='naam'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='categorienaam'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='omschrijving'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='merk'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='type'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='bouwjaar'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='formule'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='geiwcht'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='prijs'</input>" . "</td>";
-                    print "<td>" . "<input type='submit' value='toevoegen' name='toevoegen'></input>" . "</td>";
-                    print "</tr>";
-                    print "</form>";
-                }
+                    while ($row = $stmt->fetch()) {
+                        $productnummer = $row["productnummer"];
+                        $naam = $row["naam"];
+                        $categorienaam = $row["categorienaam"];
+                        $omschrijving = $row["omschrijving"];
+                        $merk = $row["merk"];
+                        $type = $row["type"];
+                        $bouwjaar = $row["bouwjaar"];
+                        $formule = $row["formule"];
+                        $geiwcht = $row["geiwcht"];
+                        $prijs = $row["prijs"];
 
-                if (isset($_POST['toevoegen'])) {
-                    $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
-                }
-                
-                if (isset($_POST['opslaan'])) {
-                    $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
-                }
-                if (isset($_POST['delete'])) {
-                    $stmt = $pdo->prepare("DELETE FROM Product WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer']]);
-                }
-                //footer
-                include("footer.php");
-                ?>
-            </table>
-        </div>
-    </body>
-</html>
+                        print "<form method='POST'>";
+                        print "<tr>";
+                        print "<td>" . "<input type='text' name='productnummer' value='$productnummer'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='naam' value='$naam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='omschrijving' value='$omschrijving'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='merk' value='$merk'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='formule' value='$formule'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='geiwcht' value='$geiwcht'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
+                        print "<td>" . "<input type='submit' value='opslaan' name='opslaan'></input>" . "</td>";
+                        print "<td>" . "<input type='submit' value='delete' name='delete'></input>" . "</td>";
+                        print "</tr></tr>";
+                        print "<td>" . "<input type='text' name='productnummer'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='naam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='categorienaam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='omschrijving'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='merk'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='type'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='bouwjaar'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='formule'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='geiwcht'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='prijs'</input>" . "</td>";
+                        print "<td>" . "<input type='submit' value='toevoegen' name='toevoegen'></input>" . "</td>";
+                        print "</tr>";
+                        print "</form>";
+                    }
+
+                    if (isset($_POST['toevoegen'])) {
+                        $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
+                        $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
+                    }
+
+                    if (isset($_POST['opslaan'])) {
+                        $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
+                        $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
+                    }
+                    if (isset($_POST['delete'])) {
+                        $stmt = $pdo->prepare("DELETE FROM Product WHERE productnummer = ?");
+                        $stmt->execute([$_POST['productnummer']]);
+                    }
+                    //footer
+                    include("footer.php");
+                    ?>
+                </table>
+            </div>
+        </body>
+    </html>
+    <?php
+}
+?>
 
 
