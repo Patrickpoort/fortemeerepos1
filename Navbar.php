@@ -29,7 +29,7 @@
                 <?php
                 // Geeft weer als iemand ingelogd is en anders de optie om te registreren.
                 if (isset($_SESSION['emailadres'])) {
-                    print "<li><a href='profilepage.php'>" . $_SESSION['emailadres'] . "</a></li>";
+                    print "<li><a href='profilepage.php'>" . "U bent ingelogd als " . $_SESSION['emailadres'] . "</a></li>";
                     print "<li><a href='logout.php'><span>Logout</span></a></li>";
                 } else {
                     print"<li><a href='login.php'><span>Login</span></a></li>";
