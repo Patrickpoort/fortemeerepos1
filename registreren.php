@@ -81,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $regist_array[0] = $_POST['voornaam'];
         $regist_array[1] = $_POST['achternaam'];
         $regist_array[2] = $_POST['emailadres'];
-        $regist_array[3] = hash('SHA256' ,($_POST['wachtwoord']));
+        $regist_array[3] = $_POST['wachtwoord'];
         $regist_array[4] = 1;
      
 
