@@ -75,19 +75,19 @@
 
                         print "<form method='POST'>";
                         print "<tr>";
-                        print "<td>" . "<input type='text' name='emailadres' value='$emailadres'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='bedrijfsnaam' value='$bedrijfsnaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='f_woonplaats' value='$fwoonplaats'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='f_straatnaam' value='$fstraatnaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='f_huisnummer' value='$fhuisnummer'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='f_postcode' value='$fpostcode'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='b_woonplaats' value='$bwoonplaats'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='b_straatnaam' value='$bstraatnaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='b_postcode' value='$bpostcode'</input>" . "</td>";
-                        print "<td>" . "<input type='text' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
-                        print "<td>" . "<input type='submit' value='opslaan' name='opslaan'></input>" . "</td>";
-                        print "<td>" . "<input type='submit' value='delete' name='delete'></input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='emailadres' value='$emailadres'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='bedrijfsnaam' value='$bedrijfsnaam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_woonplaats' value='$fwoonplaats'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_straatnaam' value='$fstraatnaam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_huisnummer' value='$fhuisnummer'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_postcode' value='$fpostcode'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_woonplaats' value='$bwoonplaats'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_straatnaam' value='$bstraatnaam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_postcode' value='$bpostcode'</input>" . "</td>";
+                        print "<td>" . "<input type='text' class='form-control input-lg' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
+                        print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
+                        print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
                         print "</tr>";
                         print "</form>";
                     }
