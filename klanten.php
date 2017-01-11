@@ -30,8 +30,8 @@
 //cookies
     include("cookies.php");
 
-    if ($_SESSION['rechten'] < 3) {
-        print 'Geen toegang';
+    if ($_SESSION['rechten'] < 2) {
+        header("location:error404.php");
     } else {
         //adminpanel navbar
         include("apanelnav.php");
