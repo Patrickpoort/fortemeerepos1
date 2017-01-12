@@ -24,20 +24,34 @@ include "database.php";
 	<div class="row">
 		Alle onderdelen worden klaar gezet door de medewerkers van Autoquest en kunnen vervolgens op afspraak worden ophaalt of opgestuurd.
 	</div>
+		<div class="row">
+			De medewerker zal contact met u opnemen om een afspraak te maken rondom de bestelling.
+			Zorg ervoor dat uw contact gegevens kloppen zoals hier onder aangegeven.
+		</div>
+		<div>
+			<?php
+
+
+
+			?>
+		</div>
 		<br>
 		</br>
 	<div class="row">
+		<b>Gegevens Autoquest:</b>
+		<br>
+		</br>
 		<ul>
-			Adres: Langlaufstrasse 1337
+			Adres: Het Rister 8B
 		</ul>
 		<ul>
-			Postcode: 1337GG in Bant
+			Postcode: 8314 RD, Bant
 		</ul>
 		<ul>
-			Telefoonnummer: 06-12343568
+			Telefoonnummer: 0527 261 178
 		</ul>
 		<ul>
-			Email: rene@autoquest.nl
+			Emailadres: autoquestbant@gmail.com
 		</ul>
 		<form class="afrondknop" action="index.php">
 			<button>Terug naar Home</button>

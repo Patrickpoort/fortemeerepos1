@@ -73,22 +73,23 @@ include "database.php";
 
 
 <?php
-//	$bestelnummer =+ 1;
-//	$emailadres = $_GET[$_SESSION["emailadres"]];
-//	$betaald = 0;
+$bestelnummer =+ 1;
+$emailadres = $_GET[$_SESSION["emailadres"]];
+$productnummer = 1;
+$aantal = 1;
+$datum = 1;
+$betaald = FALSE;
 
 
-
-
-//	$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-//	$stmt->execute(array(
-//	"bestelnummer" => $bestelnummer,
-//	"email" => $emailadres,
-//	"pnummer" => $productnummer,
-//	"aantal" => $aantal,
-//	"datum" => $datum,
-//	"betaald" => $betaald,
-//	));
+	$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
+	$stmt->execute(array(
+	"bestelnummer" => $bestelnummer,
+	"email" => $emailadres,
+	"pnummer" => $productnummer,
+	"aantal" => $aantal,
+	"datum" => $datum,
+	"betaald" => $betaald,
+	));
 
 
 
