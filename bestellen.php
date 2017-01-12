@@ -20,6 +20,7 @@ include "database.php";
 
 
 ?>
+
 <div class="container">
 <h1>Bestelling afronden.</h1>
 	<p>
@@ -40,6 +41,7 @@ include "database.php";
 		<th>Aantal</th>
 	</tr>
 	<?php
+	// Items uit de winkelwagen weergeven aan de klant
 	$subtotaal = 0;
 	$totaal = 0;
 	if (isset($_SESSION['winkelwagen'])) {
@@ -58,6 +60,7 @@ include "database.php";
 	<tr>
 		<td>Totaal</td>
 		<?php
+		// Totaalbedrag van de bestelling
 		echo "<td>" . $totaal . " Euro" ."</td>";
 		?>
 	</tr>
@@ -73,11 +76,12 @@ include "database.php";
 
 
 <?php
+// functie voor het toevoegen van een bestelregel aan de database
 $bestelnummer =+ 1;
-$emailadres = $_GET[$_SESSION["emailadres"]];
+$emailadres = $_SESSION["emailadres"];
 $productnummer = 1;
 $aantal = 1;
-$datum = 1;
+$datum = DATE_ATOM;
 $betaald = FALSE;
 
 
