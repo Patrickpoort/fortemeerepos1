@@ -38,7 +38,7 @@
         ?>
         <body>
             <div class="klanten-container">
-                <table class="klanten-overview">
+                <table class="table table-striped">
                     <tr>
                         <th>Emailadres</th>
                         <th>Voornaam</th>
@@ -60,10 +60,10 @@
 
                         print "<form method='POST'>";
                         print "<tr>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='emailadres' value='$emailadres' readonly= 'readonly'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='voornaam' value='$voornaam' readonly= 'readonly'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='achternaam' value='$achternaam' readonly= 'readonly'</input>" . "</td>";
-                        print "<td><select class='btn btn-primary dropdown-toggle' name = 'rechten'>";
+                        print "<td>" . "<input type='text' name='emailadres' value='$emailadres' readonly= 'readonly'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='voornaam' value='$voornaam' readonly= 'readonly'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='achternaam' value='$achternaam' readonly= 'readonly'</input>" . "</td>";
+                        print "<td><select class='custom-select mb-2 mr-sm-2 mb-sm-0' id='inlineFormCustomSelect' name = 'rechten'>";
                         print "<option value = '$rechten'></option>";
                         print "<option value = '1'>Klant</option>";
                         print "<option value = '2'>Medewerker</option>";

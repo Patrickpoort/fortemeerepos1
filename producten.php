@@ -38,7 +38,7 @@
         ?>
         <body>
             <div class="klanten-container">
-                <table class="klanten-overview">
+                <table class="table table-striped">
                     <tr>
                         <th>Productnummer</th>
                         <th>Naam</th>
@@ -71,16 +71,16 @@
 
                         print "<form method='POST'>";
                         print "<tr>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='productnummer' value='$productnummer'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='naam' value='$naam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='categorienaam' value='$categorienaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='omschrijving' value='$omschrijving'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='merk' value='$merk'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='type' value='$type'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='formule' value='$formule'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='geiwcht' value='$geiwcht'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='prijs' value='$prijs'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='productnummer' value='$productnummer'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='naam' value='$naam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='omschrijving' value='$omschrijving'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='merk' value='$merk'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='formule' value='$formule'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='geiwcht' value='$geiwcht'</input>" . "</td>";
+                        print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
                         print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
                         print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
                         print "</tr>";
