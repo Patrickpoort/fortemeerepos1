@@ -15,7 +15,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Inloggen</title>
+        <title>Error 404</title>
 
         <!-- Bootstrap core CSS -->
         <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,9 +34,8 @@
         //navigation bar.
         include("Navbar.php");
         ?>
-        <div class="errormessage">
-            <h2>404 ERROR</h2>
-            <h3>Sorry, deze pagina is niet beschikbaar!</h3>
+        <div class="text-center">
+            <img src="images/error404.png" class="rounded" alt="">
         </div>
         <?php
         //footer
