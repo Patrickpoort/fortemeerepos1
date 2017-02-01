@@ -25,35 +25,36 @@
 
     </head>
     <?php
-//database connectie
+    //database connectie
     include("database.php");
-//cookies
-    include("cookies.php");
+    
+    //cookies
+    include("include/cookies.php");
+    
+    //rechten check
+    rechten();
 
-    if ($_SESSION['rechten'] < 2) {
-        header("location:error404.php");
-    } else {
-        //adminpanel navbar
-        include("apanelnav.php");
-        ?>
-        <body>
-            <div class="klanten-container">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Emailadres</th>
-                        <th>bedrijfsnaam</th>
-                        <th>Woonplaats</th>
-                        <th>Straatnaam</th>
-                        <th>Huisnummer</th>
-                        <th>Postcode</th>
-                        <th>Bedrijf woonplaats</th>
-                        <th>Bedrijf straatnaam</th>
-                        <th>Bedrijf huisnummer</th>
-                        <th>Bedrijf postcode</th>
-                        <th>Telefoonnummer</th>
-                        <th>Opslaan</th>
-                        <th>Delete</th>
-                    </tr>
+    //adminpanel navbar
+    include("apanelnav.php");
+    ?>
+    <body>
+        <div class="klanten-container">
+            <table class="table table-striped">
+                <tr>
+                    <th>Emailadres</th>
+                    <th>bedrijfsnaam</th>
+                    <th>Woonplaats</th>
+                    <th>Straatnaam</th>
+                    <th>Huisnummer</th>
+                    <th>Postcode</th>
+                    <th>Bedrijf woonplaats</th>
+                    <th>Bedrijf straatnaam</th>
+                    <th>Bedrijf huisnummer</th>
+                    <th>Bedrijf postcode</th>
+                    <th>Telefoonnummer</th>
+                    <th>Opslaan</th>
+                    <th>Delete</th>
+                </tr>
                 <?php
                 $query = "select * from klant order by emailadres asc";
 
@@ -105,14 +106,10 @@
                     // vraag alle klanten waar de searchstring in voorkomt
                     $stmt->execute([$_POST['emailadres']]);
                 }
-//footer
+                //footer
                 include("footer.php");
                 ?>
             </table>
         </div>
     </body>
-    </html>
-
-    <?php
-}
-?>
+</html>
