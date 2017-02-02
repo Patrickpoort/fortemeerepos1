@@ -67,7 +67,7 @@
                     $type = $row["type"];
                     $bouwjaar = $row["bouwjaar"];
                     $formule = $row["formule"];
-                    $geiwcht = $row["geiwcht"];
+                    $gewicht = $row["gewicht"];
                     $prijs = $row["prijs"];
 
                     print "<form method='POST'>";
@@ -80,7 +80,7 @@
                     print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='formule' value='$formule'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='geiwcht' value='$geiwcht'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='gewicht' value='$gewicht'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
@@ -94,8 +94,8 @@
                 }
 
                 if (isset($_POST['opslaan'])) {
-                    $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
+                    $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
+                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
                 }
                 if (isset($_POST['delete'])) {
                     $stmt = $pdo->prepare("DELETE FROM Product WHERE productnummer = ?");
