@@ -1,6 +1,14 @@
 <?php
 //cookies.
 include("include/cookies.php");
+<<<<<<< HEAD
+=======
+
+//database.
+include ("database.php");
+
+
+>>>>>>> origin/master
 
 //navigation bar.
 include("Navbar.php");
@@ -57,27 +65,32 @@ include("Navbar.php");
     <div class="col-md-4">
         <h2>Waarom AutoQuest</h2>
         <p>Autoquest zorgt voor een groot aanbod aan verschillende onderdelen voor uw auto. Op deze website vindt u alle informatie over de te bestellen producten en onderdelen. </p>
-        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+
     </div>
     <div class="col-md-4">
         <h2>Auto-onderdelen</h2>
         <p>Op de pagina auto onderdelen vindt u al onze beschikbare producten en kunt u zoeken naar uw gewenste product. Van Audi tot BMW, alle merken zijn aanwezig met informatie zoals bouwjaar, status en prijzen.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+
     </div>
     <div class="col-md-4">
         <h2>Werkwijze</h2>
         <p>Wij van Autoquest willen u de beste service bieden op het gebiedt van reparatie en het aanleveren van gewenste onderdelen. Neem gerust contact met ons op via de contact pagina voor eventuele vragen en onduidelijkheden.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+
     </div>
 
 </div>
 
 
-
+<?php
+include ("footer.php");
+?>
 
 
 </html>
+<<<<<<< HEAD
 <?php include("footer.php"); ?>
+=======
+>>>>>>> origin/master
 
 
 

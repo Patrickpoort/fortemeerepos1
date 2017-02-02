@@ -27,10 +27,16 @@
         <div class="nav-items navbar-right navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <?php
+                // Turn off all error reporting
+                error_reporting(0);
+
                 // Geeft weer als iemand ingelogd is en anders de optie om te registreren.
                 if (isset($_SESSION['emailadres'])) {
                     print "<li><a href='profilepage.php'>" . $_SESSION['emailadres'] . "</a></li>";
                     print "<li><a href='logout.php'><span>Logout</span></a></li>";
+                }
+                if ($_SESSION['rechten'] == 3 OR $_SESSION['rechten'] == 2) {
+                    print "<li><a href='producten.php'>Adminpanel</a></li>";
                 } else {
                     print"<li><a href='login.php'><span>Login</span></a></li>";
                     print"<li><a href='registreren.php'><span>Registeren</span></a></li>";

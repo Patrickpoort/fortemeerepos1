@@ -2,7 +2,9 @@
 session_start();
 
 include("HTML HEAD.php");
-include "include/database.php";
+//Database.
+require_once ("database.php");
+
 
 ?>
 

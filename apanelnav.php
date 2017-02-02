@@ -10,7 +10,7 @@
               </button>
 
             <!--logo placeholder-->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
               <!-- Tijdelijke Tekst -->
             <p style="color: white">Autoquest</p>
             </a>
@@ -19,6 +19,7 @@
     <!--apanelnavbar-->
         <div class="nav-items navbar-left navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li><a href="rechten.php">Rechten</a> </li>
                 <li><a href="klanten.php">Klanten</a> </li>
                 <li><a href="producten.php">Producten</a> </li>
                 <li><a href="index.php">Homepagina</a> </li>

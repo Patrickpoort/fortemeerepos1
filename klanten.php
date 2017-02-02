@@ -24,18 +24,22 @@
         <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
 
     </head>
-    <body>
-        <?php      
-        //database connectie
-        include("include/database.php");
-        //cookies
-        include("cookies.php");
-        //adminpanel navbar
-        include("apanelnav.php");
+    <?php
+    //database connectie
+    include("database.php");
+    
+    //cookies
+    include("include/cookies.php");
+    
+    //rechten check
+    rechten();
 
-        ?>
+    //adminpanel navbar
+    include("apanelnav.php");
+    ?>
+    <body>
         <div class="klanten-container">
-            <table class="klanten-overview">
+            <table class="table table-striped">
                 <tr>
                     <th>Emailadres</th>
                     <th>bedrijfsnaam</th>
@@ -69,7 +73,7 @@
                     $bhuisnummer = $row["b_huisnummer"];
                     $bpostcode = $row["b_postcode"];
                     $telefoonnummer = $row["telefoonnummer"];
-                    
+
                     print "<form method='POST'>";
                     print "<tr>";
                     print "<td>" . "<input type='text' name='emailadres' value='$emailadres'</input>" . "</td>";
@@ -83,9 +87,10 @@
                     print "<td>" . "<input type='text' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='b_postcode' value='$bpostcode'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
-                    print "<td>" . "<input type='submit' value='opslaan' name='opslaan'></input>" . "</td>";
-                    print "<td>" . "<input type='submit' value='delete' name='delete'></input>" . "</td>";
+                    print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
+                    print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
                     print "</tr>";
+                    print "</table";
                     print "</form>";
                 }
 
@@ -108,5 +113,3 @@
         </div>
     </body>
 </html>
-
-

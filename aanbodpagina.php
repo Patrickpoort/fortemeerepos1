@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+ <!-- Bootstrap core CSS -->
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 
-
+        <!-- Custom styles for this template -->
+        <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
 
     </head>
     <body>
 
         <?php
-// database include
-        include 'HTML HEAD.php';
 
-        include 'include/database.php';
-        $pdo= connecttodb();
+        require_once 'database.php';
+
+        //cookies.
+        include("include/cookies.php");
+
+        //navigation bar.
+        include("Navbar.php");
+
         $query = "SELECT * FROM product";
         $temp_array = [];
         if (isset($_GET['submit'])) {

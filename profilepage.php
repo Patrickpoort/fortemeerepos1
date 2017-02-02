@@ -27,13 +27,13 @@
     <body>
         <?php
         //database connectie
-        include("include/database.php");
-        $pdo= connecttodb();
+        include("database.php");
+
         //cookies
         include("include/cookies.php");
 
-        //adminpanel navbar
-        include("include/navigation.php");
+        //navbar
+        include("Navbar.php");
         ?>
 
         <div class="container">

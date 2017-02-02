@@ -1,3 +1,10 @@
+<!--
+    MIT License
+
+    Copyright (c) 2016 Edwin van Dasselaar
+
+    see LICENSE file for more information
+-->
 <?php
 /**
  * Created by PhpStorm.
@@ -9,10 +16,11 @@
 session_start();
 
 include("HTML HEAD.php");
-include "include/database.php";
+include "database.php";
 
 
 ?>
+
 <div class="container">
 <h1>Bestelling afronden.</h1>
 	<p>
@@ -33,6 +41,7 @@ include "include/database.php";
 		<th>Aantal</th>
 	</tr>
 	<?php
+	// Items uit de winkelwagen weergeven aan de klant
 	$subtotaal = 0;
 	$totaal = 0;
 	if (isset($_SESSION['winkelwagen'])) {
@@ -51,6 +60,7 @@ include "include/database.php";
 	<tr>
 		<td>Totaal</td>
 		<?php
+		// Totaalbedrag van de bestelling
 		echo "<td>" . $totaal . " Euro" ."</td>";
 		?>
 	</tr>
@@ -66,22 +76,24 @@ include "include/database.php";
 
 
 <?php
+// functie voor het toevoegen van een bestelregel aan de database
 $bestelnummer =+ 1;
-$emailadres = $_GET[$_SESSION["emailadres"]];
-$betaald = 0;
+$emailadres = $_SESSION["emailadres"];
+$productnummer = 1;
+$aantal = 1;
+$datum = DATE_ATOM;
+$betaald = FALSE;
 
 
-
-
-$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-$stmt->execute(array(
+	$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
+	$stmt->execute(array(
 	"bestelnummer" => $bestelnummer,
 	"email" => $emailadres,
 	"pnummer" => $productnummer,
 	"aantal" => $aantal,
 	"datum" => $datum,
 	"betaald" => $betaald,
-));
+	));
 
 
 
@@ -91,7 +103,7 @@ $stmt->execute(array(
 	<br>
 </form>
 <?php include "footer.php"; ?>
-
+<?php
 //-->$winkelwagen = array(
 //	'productnummer' => $productnummer,
 //	'prijs' => $prijs,
@@ -121,7 +133,7 @@ $stmt->execute(array(
 //	));
 
 
-?>
+
 
 //$bestelnummer =+ 1;
 //$emailadres = "testklant@gmail.com";
@@ -142,3 +154,4 @@ $stmt->execute(array(
 //    "datum" => $datum,
 //    "betaald" => $betaald,
 //));
+?>
