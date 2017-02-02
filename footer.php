@@ -1,21 +1,4 @@
-<?php
-//database connectie.
-include("include/database.php");
-$pdo= connecttodb();
-if (isset($_SESSION['emailadres'])) {
 
-
-    $query = "select * from Account where rechten = 3";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute();
-
-    if (isset($_SESSION['rechten']) == 3) {
-        print "<p><a href='klanten.php'>Adminpanel</a></p>";
-    }
-} else {
-
-}
-?>
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
         <p class="navbar-text"><a href="#">Contact</a></p>

@@ -1,9 +1,10 @@
 <?php
 //cookies.
-include("cookies.php");
+include("include/cookies.php");
 
 //navigation bar.
 include("Navbar.php");
+
 ?>
 
 <html>
@@ -76,6 +77,7 @@ include("Navbar.php");
 
 
 </html>
-<?php include "footer.php"; ?>
+<?php include("footer.php"); ?>
+
 
 
