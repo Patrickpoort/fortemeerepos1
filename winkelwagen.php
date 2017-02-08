@@ -16,16 +16,17 @@ require_once ("database.php");
 $subtotaal = 0;
 $totaal = 0;
 
+
 if (isset($_GET["leeg"])) {
     unset($_SESSION["winkelwagen"]);
 }
 
-if (isset($_GET['productnummer'])) {
-    $productnummer = $_GET['productnummer'];
+if (isset($_POST['productnummer'])) {
+    $productnummer = $_POST['productnummer'];
 }
 
-if (isset($_GET['aantal'])) {
-    $aantal = $_GET['aantal'];
+if (isset($_POST['aantal'])) {
+    $aantal = $_POST['aantal'];
 }
 
 if (isset($productnummer)) {
@@ -58,13 +59,21 @@ if (isset($productnummer)) {
                 foreach ($_SESSION['winkelwagen'] as $item) {
                     $subtotaal = $item['prijs'] * $item['aantal'];
                     $totaal += $subtotaal;
+                    echo "<form method='POST'>";
                     echo "<tr>";
                     echo "<td>" . $item['productnummer'] . "</td>";
                     echo "<td>" . $item['prijs'] . "</td>";
                     echo "<td>" . $item['aantal'] . "</td>";
+                    echo "<td>" . "<input type='submit' value='aantal wijzigen' name='wijzigen'>" . "</td>";
+                    echo "<td>" . "<input type='submit' value='verwijderen' name='del" . $item['productnummer'] . "'>" . "</td>";
                     echo "</tr>";
+                    echo "</form>";
                 }
-            }
+                
+                if (isset($_POST['wijzigen'])) {
+                    unset($_SESSION['winkelwagen']['productnummer']);
+                }
+            } 
             ?>
 
         </table>
@@ -82,9 +91,19 @@ if (isset($productnummer)) {
             </table>
 
 <!--            if logged in-->
+            <?php
+            $login = $_SESSION['emailadres'];
+            if ($login) {
+                ?>
             <form class="bestelknop" action="bestellen.php">
                 <button>Bestellen</button>
             </form>
+`           <?php
+            } else {
+                echo 'Login of maak een account aan voordat u kunt bestellen';
+            }
+            ?>
+            
         </div>
     </div>
 </div>

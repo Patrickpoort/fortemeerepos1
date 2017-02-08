@@ -5,8 +5,6 @@ include("include/cookies.php");
 //database.
 include ("database.php");
 
-
-
 //navigation bar.
 include("Navbar.php");
 ?>

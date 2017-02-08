@@ -70,8 +70,6 @@
         //footer
         include("footer.php");
 
-
-
         if (!isset($_POST['submit'])) {
             print $form;
         }
