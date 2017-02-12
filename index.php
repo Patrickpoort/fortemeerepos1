@@ -1,14 +1,14 @@
 <?php
 //cookies.
 include("include/cookies.php");
-<<<<<<< HEAD
-=======
+
+
 
 //database.
 include ("database.php");
 
 
->>>>>>> origin/master
+
 
 //navigation bar.
 include("Navbar.php");
@@ -87,10 +87,10 @@ include ("footer.php");
 
 
 </html>
-<<<<<<< HEAD
+
 <?php include("footer.php"); ?>
-=======
->>>>>>> origin/master
+
+
 
 
 

@@ -87,7 +87,7 @@
             // checked submit knop, en of waardes zijn ingevuld. Anders melding gebruikersnaam of wachtwoord is incorrect.
             if (isset($_POST['submit'])) {
                 $user = $_POST['emailadres'];
-                $pass = $_POST['pass'];
+                $pass = hash('SHA256' ,($_POST['pass']));
                 // checked database op ingevoerde waardes.
                 $sql2 = "SELECT emailadres, rechten FROM account WHERE wachtwoord='" . $pass . "' AND emailadres='" . $user . "'";
 
