@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 
-=======
 <?php
 //database connectie.
 include("database.php");
