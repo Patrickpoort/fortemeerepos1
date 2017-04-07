@@ -11,7 +11,7 @@ require_once ("database.php");
 <?php
 $subtotaal = 0;
 $totaal = 0;
-if (isset($_POST["leeg"])) {
+if (isset($_GET["leeg"])) {
     unset($_SESSION["winkelwagen"]);
 }
 if (isset($_POST['productnummer'])) {

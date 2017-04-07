@@ -77,13 +77,19 @@ include "database.php";
 
 <?php
 // functie voor het toevoegen van een bestelregel aan de database
-$bestelnummer =+ 1;
-$emailadres = $_SESSION["emailadres"];
-$productnummer = 1;
-$aantal = 1;
-$datum = DATE_ATOM;
-$betaald = FALSE;
 
+
+	$bestelnummer =+ 1;
+	$emailadres = $_SESSION['emailadres'];
+        if (isset($_POST['productnummer'])) {
+            $productnummer = $_POST['productnummer'];
+        }
+        if (isset($_POST['aantal'])) {
+            $aantal = $_POST['aantal'];
+        }
+	
+	$datum = date("Y-m-d H:i:s");
+	$betaald = 0;
 
 	$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
 	$stmt->execute(array(
@@ -98,60 +104,7 @@ $betaald = FALSE;
 
 
 ?>
-<form class="afrondknop" action="bestelt.php">
-	<button>Bestelling definitief afronden</button>
-	<br>
+<form class="afrondknop" action="bestelt.php" method="POST">
+    <input type="button" name="afrondknop" value="bestelling plaatsen">
 </form>
 <?php include "footer.php"; ?>
-<?php
-//-->$winkelwagen = array(
-//	'productnummer' => $productnummer,
-//	'prijs' => $prijs,
-//	'aantal' => $aantal
-
-//	);
-
-//	$bestelnummer =+ 1;
-//	$emailadres = $_GET[$user];
-//	$productnummer = $_GET['productnummer'];
-//	$aantal = $_GET['aantal'];
-//	$datum = date("Y-m-d H:i:s");
-//	$betaald = 0;
-
-
-//	$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer,
-//	aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-
-//	$stmt->execute(array(
-//    	"bestelnummer" => $bestelnummer,
-//    	"email" => $emailadres,
-//  	"pnummer" => $productnummer,
-//	"aantal" => $aantal,
-//	"datum" => $datum,
-//	"betaald" => $betaald,
-
-//	));
-
-
-
-
-//$bestelnummer =+ 1;
-//$emailadres = "testklant@gmail.com";
-//$productnummer = $_GET['productnummer'];
-//$aantal = $_GET['aantal'];
-//$datum = date("Y-m-d H:i:s");
-//$betaald = 0;
-//
-
-//$stmt = $pdo->prepare("INSERT INTO bestelregel (bestelnummer, emailadres, productnummer,
-//aantal, datum, betaald) VALUES (:bestelnummer, :email, :pnummer, :aantal, :datum, :betaald)");
-//
-//$stmt->execute(array(
-//    "bestelnummer" => $bestelnummer,
-//    "email" => $emailadres,
-//    "pnummer" => $productnummer,
-//    "aantal" => $aantal,
-//    "datum" => $datum,
-//    "betaald" => $betaald,
-//));
-?>
