@@ -37,7 +37,7 @@
     //adminpanel navbar
     include("apanelnav.php");
     ?>
-    <body>
+   <body>
         <div class="klanten-container">
             <table class="table table-striped">
                 <tr>
@@ -54,10 +54,15 @@
                 </tr>
                 <?php
                 $query = "select * from Product order by productnummer asc";
-
+                
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
-
+                
+                $query_check_cat = "SELECT * FROM categorie";
+                $check_stmt = $pdo->prepare($query_check_cat);
+                $check_category = $check_stmt->execute();
+                
+                
                 while ($row = $stmt->fetch()) {
                     $productnummer = $row["productnummer"];
                     $naam = $row["naam"];
@@ -69,7 +74,6 @@
                     $formule = $row["formule"];
                     $gewicht = $row["gewicht"];
                     $prijs = $row["prijs"];
-
                     print "<form method='POST'>";
                     print "<tr>";
                     print "<td>" . "<input type='text' name='productnummer' value='$productnummer'</input>" . "</td>";
@@ -87,16 +91,19 @@
                     print "</tr>";
                     print "</form>";
                 }
-
                 if (isset($_POST['toevoegen'])) {
                     $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
                 }
-
                 if (isset($_POST['opslaan'])) {
                     $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
+                if ($_POST['categorienaam'] NOT IN  $check_category) {
+                    $stmt4 = $pdo->prepare("INSERT INTO categorie ")
                 }
+                    
+                }
+                
                 if (isset($_POST['delete'])) {
                     $stmt = $pdo->prepare("DELETE FROM Product WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer']]);
