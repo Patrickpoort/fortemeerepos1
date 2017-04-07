@@ -7,7 +7,7 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+   <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,16 +27,11 @@
         <?php
         //database connectie.
         include("database.php");
-
-
         //cookies.
         include("include/cookies.php");
-
         checkLogin();
-
         //navigation bar.
         include("Navbar.php");
-
         //login & registreer box.
         $form = "<div class='container'>"
                 . "<div class='row myrow'>"
@@ -69,26 +64,22 @@
                 . "</div>";
         //footer
         include("footer.php");
-
         if (!isset($_POST['submit'])) {
             print $form;
         }
-
         if (isset($_SESSION['emailadres'])) {
             header("location:index.php");
         } else {
             
         }
-
         function checkLogin() {
             global $pdo;
             // checked submit knop, en of waardes zijn ingevuld. Anders melding gebruikersnaam of wachtwoord is incorrect.
             if (isset($_POST['submit'])) {
                 $user = $_POST['emailadres'];
-                $pass = $_POST['pass'];
+                $pass = hash('SHA256' ,($_POST['pass']));
                 // checked database op ingevoerde waardes.
                 $sql2 = "SELECT emailadres, rechten FROM account WHERE wachtwoord='" . $pass . "' AND emailadres='" . $user . "'";
-
                 if ($res = $pdo->query($sql2)) {
                     if ($res->rowCount() > 0) {
                         $result = $res->fetch(PDO::FETCH_ASSOC);
