@@ -73,16 +73,18 @@ if (isset($productnummer)) {
             </table>
 
 <!--            if logged in-->
-            <?php>
+            <?php
             $login = $_SESSION['emailadres'];
-            if ($login) {
+            if ($login) { 
+                ?>
                 <form class="bestelknop" action="bestellen.php">
                     <button>Bestellen</button>
                 </form>
+            <?php    
             } else {
                 echo 'Login of maak een account aan voordat u kunt bestellen';
             }
-            
+            ?>
         </div>
     </div>
 </div>
