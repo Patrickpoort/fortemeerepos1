@@ -35,8 +35,8 @@
                     print "<li><a href='profilepage.php'>" . $_SESSION['emailadres'] . "</a></li>";
                     print "<li><a href='logout.php'><span>Logout</span></a></li>";
                 }
-                if ($_SESSION['rechten'] == 3) {
-                    print "<li><a href='klanten.php'>Adminpanel</a></li>";
+                if ($_SESSION['rechten'] == 3 OR $_SESSION['rechten'] == 2) {
+                    print "<li><a href='producten.php'>Adminpanel</a></li>";
                 } else {
                     print"<li><a href='login.php'><span>Login</span></a></li>";
                     print"<li><a href='registreren.php'><span>Registeren</span></a></li>";

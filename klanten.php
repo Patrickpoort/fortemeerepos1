@@ -25,93 +25,91 @@
 
     </head>
     <?php
-//database connectie
+    //database connectie
     include("database.php");
-//cookies
-    include("cookies.php");
+    
+    //cookies
+    include("include/cookies.php");
+    
+    //rechten check
+    rechten();
 
-    if ($_SESSION['rechten'] < 2) {
-        header("location:error404.php");
-    } else {
-        //adminpanel navbar
-        include("apanelnav.php");
-        ?>
-        <body>
-            <div class="klanten-container">
-                <table class="klanten-overview">
-                    <tr>
-                        <th>Emailadres</th>
-                        <th>bedrijfsnaam</th>
-                        <th>Woonplaats</th>
-                        <th>Straatnaam</th>
-                        <th>Huisnummer</th>
-                        <th>Postcode</th>
-                        <th>Bedrijf woonplaats</th>
-                        <th>Bedrijf straatnaam</th>
-                        <th>Bedrijf huisnummer</th>
-                        <th>Bedrijf postcode</th>
-                        <th>Telefoonnummer</th>
-                        <th>Opslaan</th>
-                        <th>Delete</th>
-                    </tr>
-                    <?php
-                    $query = "select * from klant order by emailadres asc";
+    //adminpanel navbar
+    include("apanelnav.php");
+    ?>
+    <body>
+        <div class="klanten-container">
+            <table class="table table-striped">
+                <tr>
+                    <th>Emailadres</th>
+                    <th>bedrijfsnaam</th>
+                    <th>Woonplaats</th>
+                    <th>Straatnaam</th>
+                    <th>Huisnummer</th>
+                    <th>Postcode</th>
+                    <th>Bedrijf woonplaats</th>
+                    <th>Bedrijf straatnaam</th>
+                    <th>Bedrijf huisnummer</th>
+                    <th>Bedrijf postcode</th>
+                    <th>Telefoonnummer</th>
+                    <th>Opslaan</th>
+                    <th>Delete</th>
+                </tr>
+                <?php
+                $query = "select * from klant order by emailadres asc";
 
-                    $stmt = $pdo->prepare($query);
-                    $stmt->execute();
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
 
-                    while ($row = $stmt->fetch()) {
-                        $emailadres = $row["emailadres"];
-                        $bedrijfsnaam = $row["bedrijfsnaam"];
-                        $fwoonplaats = $row["f_woonplaats"];
-                        $fstraatnaam = $row["f_straatnaam"];
-                        $fhuisnummer = $row["f_huisnummer"];
-                        $fpostcode = $row["f_postcode"];
-                        $bwoonplaats = $row["b_woonplaats"];
-                        $bstraatnaam = $row["b_straatnaam"];
-                        $bhuisnummer = $row["b_huisnummer"];
-                        $bpostcode = $row["b_postcode"];
-                        $telefoonnummer = $row["telefoonnummer"];
+                while ($row = $stmt->fetch()) {
+                    $emailadres = $row["emailadres"];
+                    $bedrijfsnaam = $row["bedrijfsnaam"];
+                    $fwoonplaats = $row["f_woonplaats"];
+                    $fstraatnaam = $row["f_straatnaam"];
+                    $fhuisnummer = $row["f_huisnummer"];
+                    $fpostcode = $row["f_postcode"];
+                    $bwoonplaats = $row["b_woonplaats"];
+                    $bstraatnaam = $row["b_straatnaam"];
+                    $bhuisnummer = $row["b_huisnummer"];
+                    $bpostcode = $row["b_postcode"];
+                    $telefoonnummer = $row["telefoonnummer"];
 
-                        print "<form method='POST'>";
-                        print "<tr>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='emailadres' value='$emailadres'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='bedrijfsnaam' value='$bedrijfsnaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_woonplaats' value='$fwoonplaats'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_straatnaam' value='$fstraatnaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_huisnummer' value='$fhuisnummer'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='f_postcode' value='$fpostcode'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_woonplaats' value='$bwoonplaats'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_straatnaam' value='$bstraatnaam'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='b_postcode' value='$bpostcode'</input>" . "</td>";
-                        print "<td>" . "<input type='text' class='form-control input-lg' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
-                        print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
-                        print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
-                        print "</tr>";
-                        print "</form>";
-                    }
+                    print "<form method='POST'>";
+                    print "<tr>";
+                    print "<td>" . "<input type='text' name='emailadres' value='$emailadres'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='bedrijfsnaam' value='$bedrijfsnaam'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='f_woonplaats' value='$fwoonplaats'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='f_straatnaam' value='$fstraatnaam'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='f_huisnummer' value='$fhuisnummer'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='f_postcode' value='$fpostcode'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='b_woonplaats' value='$bwoonplaats'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='b_straatnaam' value='$bstraatnaam'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='b_postcode' value='$bpostcode'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
+                    print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
+                    print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
+                    print "</tr>";
+                    print "</table";
+                    print "</form>";
+                }
 
-                    if (isset($_POST['opslaan'])) {
-                        // update emailadres, bedrijfsnaam, woonplaats, straatnaam, huisnummer, postcode, bwoonplaats, bstraatnaam, bhuisnummer, bpostcode, telefoonnummer.
-                        $stmt = $pdo->prepare("UPDATE klant set  emailadres = ?, bedrijfsnaam = ?, f_woonplaats = ?, f_straatnaam = ?, f_huisnummer = ?, f_postcode = ?, b_woonplaats = ?, b_straatnaam = ?, b_huisnummer = ?, b_postcode = ?, telefoonnummer = ? WHERE emailadres = ?");
-                        // vraag alle klanten waar de searchstring in voorkomt
-                        $stmt->execute([$_POST['emailadres'], $_POST['bedrijfsnaam'], $_POST['f_woonplaats'], $_POST['f_straatnaam'], $_POST['f_huisnummer'], $_POST['f_postcode'], $_POST['b_woonplaats'], $_POST['b_straatnaam'], $_POST['b_huisnummer'], $_POST['b_postcode'], $_POST['telefoonnummer'], $_POST['emailadres']]);
-                    }
-                    if (isset($_POST['delete'])) {
-                        // delete emailadres, bedrijfsnaam, woonplaats, straatnaam, huisnummer, postcode, bwoonplaats, bstraatnaam, bhuisnummer, bpostcode, telefoonnummer.
-                        $stmt = $pdo->prepare("DELETE FROM klant WHERE emailadres = ?");
-                        // vraag alle klanten waar de searchstring in voorkomt
-                        $stmt->execute([$_POST['emailadres']]);
-                    }
-//footer
-                    include("footer.php");
-                    ?>
-                </table>
-            </div>
-        </body>
-    </html>
-
-    <?php
-}
-?>
+                if (isset($_POST['opslaan'])) {
+                    // update emailadres, bedrijfsnaam, woonplaats, straatnaam, huisnummer, postcode, bwoonplaats, bstraatnaam, bhuisnummer, bpostcode, telefoonnummer.
+                    $stmt = $pdo->prepare("UPDATE klant set  emailadres = ?, bedrijfsnaam = ?, f_woonplaats = ?, f_straatnaam = ?, f_huisnummer = ?, f_postcode = ?, b_woonplaats = ?, b_straatnaam = ?, b_huisnummer = ?, b_postcode = ?, telefoonnummer = ? WHERE emailadres = ?");
+                    // vraag alle klanten waar de searchstring in voorkomt
+                    $stmt->execute([$_POST['emailadres'], $_POST['bedrijfsnaam'], $_POST['f_woonplaats'], $_POST['f_straatnaam'], $_POST['f_huisnummer'], $_POST['f_postcode'], $_POST['b_woonplaats'], $_POST['b_straatnaam'], $_POST['b_huisnummer'], $_POST['b_postcode'], $_POST['telefoonnummer'], $_POST['emailadres']]);
+                }
+                if (isset($_POST['delete'])) {
+                    // delete emailadres, bedrijfsnaam, woonplaats, straatnaam, huisnummer, postcode, bwoonplaats, bstraatnaam, bhuisnummer, bpostcode, telefoonnummer.
+                    $stmt = $pdo->prepare("DELETE FROM klant WHERE emailadres = ?");
+                    // vraag alle klanten waar de searchstring in voorkomt
+                    $stmt->execute([$_POST['emailadres']]);
+                }
+                //footer
+                include("footer.php");
+                ?>
+            </table>
+        </div>
+    </body>
+</html>

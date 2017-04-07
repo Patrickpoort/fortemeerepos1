@@ -5,6 +5,9 @@ include 'HTML HEAD.php';
 //Database.
 include 'database.php';
 
+
+
+
 $regist_array   = [];
 $errors         = [];
 $error_count    = 0;
@@ -17,6 +20,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $passw = ($_POST['wachtwoord']);
     $pass_rep = ($_POST['wachtwoord2']);
     $rechten = 1;
+   
+    
 
     $query = $pdo->prepare("SELECT emailadres FROM account WHERE emailadres = :emailadres");
     $query->execute(array(':emailadres' => $email));
@@ -90,6 +95,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
+
+
+
 
     <div class="container">
         <?php
