@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 
-=======
+
 <?php
 //database connectie.
 include("database.php");
@@ -45,7 +44,7 @@ include("database.php");
 //    print "<a href "
 //}
 ?>
->>>>>>> origin/master
+
 <div class="navbar navbar-default navbar-fixed-bottom" id="footer">
     <div class="container">
         <p class="navbar-text"><a href="#">Contact</a></p>
