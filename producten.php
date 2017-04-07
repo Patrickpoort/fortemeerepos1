@@ -58,9 +58,9 @@
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
                 
-                $query_check_cat = "SELECT * FROM categorie";
-                $check_stmt = $pdo->prepare($query_check_cat);
-                $check_category = $check_stmt->execute();
+               //$query_check_cat = "SELECT naam FROM categorie";
+               //$check_stmt = $pdo->prepare($query_check_cat);
+               //$check_category = $check_stmt->execute();
                 
                 
                 while ($row = $stmt->fetch()) {
@@ -91,6 +91,23 @@
                     print "</tr>";
                     print "</form>";
                 }
+                 print "<form method='POST'>";
+                    print "<tr>";
+                    print "<td>" . "<input type='text' name='productnummer' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='naam' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='categorienaam' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='omschrijving' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='merk' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='type' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='bouwjaar' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='formule' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='gewicht' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='prijs' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='submit' class='btn btn-success' value='toevoegen' name='toevoegen'></input>" . "</td>";
+                    print "</tr>";
+                    print "</form>";
+                    
+                    
                 if (isset($_POST['toevoegen'])) {
                     $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
@@ -98,9 +115,10 @@
                 if (isset($_POST['opslaan'])) {
                     $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
-                if ($_POST['categorienaam'] NOT IN  $check_category) {
-                    $stmt4 = $pdo->prepare("INSERT INTO categorie ")
-                }
+                //if (in_array($_POST['categorienaam'], $check_category)) {
+                    //$stmt4 = $pdo->prepare("INSERT INTO categorie (naam) VALUES (?)");
+                    //$stmt4->execute($_POST ['categorienaam']);
+               //}
                     
                 }
                 
@@ -110,6 +128,7 @@
                 }
                 //footer
                 include("footer.php");
+                
                 ?>
             </table>
         </div>

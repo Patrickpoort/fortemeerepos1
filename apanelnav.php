@@ -22,6 +22,7 @@
                 <li><a href="rechten.php">Rechten</a> </li>
                 <li><a href="klanten.php">Klanten</a> </li>
                 <li><a href="producten.php">Producten</a> </li>
+                <li><a href="CategorieFotoAdd.php">Foto/Categorie toevoegen</a> </li>
                 <li><a href="index.php">Homepagina</a> </li>
             </ul>
         </div>

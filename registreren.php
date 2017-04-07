@@ -185,7 +185,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
            </div>
         
            <div class="col-md-4">
-            <!-- Bedrijfskunde -->
+            <!-- Bedrijfsnaam -->
             <label for="bedrijfsnaam" class="sr-only">Bedrijfsnaam</label>
             <input name="bedrijfsnaam" type="text" id="bedrijfsnaam" class="form-control" placeholder="Bedrijfsnaam"><br>
             <!-- Vestiging Bedrijf -->
