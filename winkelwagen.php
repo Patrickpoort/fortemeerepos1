@@ -1,33 +1,25 @@
 <?php
 session_start();
-
 include("HTML HEAD.php");
 //Database.
 require_once ("database.php");
-
-
 ?>
 
 <!DOCTYPE html>
 <body>
 
 <?php
-
 $subtotaal = 0;
 $totaal = 0;
-
-if (isset($_GET["leeg"])) {
+if (isset($_POST["leeg"])) {
     unset($_SESSION["winkelwagen"]);
 }
-
-if (isset($_GET['productnummer'])) {
-    $productnummer = $_GET['productnummer'];
+if (isset($_POST['productnummer'])) {
+    $productnummer = $_POST['productnummer'];
 }
-
-if (isset($_GET['aantal'])) {
-    $aantal = $_GET['aantal'];
+if (isset($_POST['aantal'])) {
+    $aantal = $_POST['aantal'];
 }
-
 if (isset($productnummer)) {
     $stmt = $pdo->prepare("SELECT prijs FROM product WHERE productnummer = ?");
     $stmt->execute(array($productnummer));
@@ -41,7 +33,6 @@ if (isset($productnummer)) {
     );
     $_SESSION['winkelwagen'][] = $winkelwagen;
 }
-
 ?>
 
 <div class="container">
@@ -82,9 +73,16 @@ if (isset($productnummer)) {
             </table>
 
 <!--            if logged in-->
-            <form class="bestelknop" action="bestellen.php">
-                <button>Bestellen</button>
-            </form>
+            <?php>
+            $login = $_SESSION['emailadres'];
+            if ($login) {
+                <form class="bestelknop" action="bestellen.php">
+                    <button>Bestellen</button>
+                </form>
+            } else {
+                echo 'Login of maak een account aan voordat u kunt bestellen';
+            }
+            
         </div>
     </div>
 </div>
