@@ -18,24 +18,7 @@ include "database.php";
 <body>
 
 
-    <?php
-    $bestelnummer;
-    
-    $emailadres = $_SESSION['emailadres'];
-    $datum = date("Y-m-d H:i:s");
-    if (isset($_POST['productnummer'])) {
-        $productnummer = $_POST['productnummer'];
-    }
-    if (isset($_POST['aantal'])) {
-        $aantal = $_POST['aantal'];
-    }
-
-    $stmt = $pdo->prepare("INSERT INTO bestelregel bestelnummer = ?, emailadres = ?, productnummer = ?, aantal = ?, datum = ?, betaald = ?");
-    $stmt->execute([$bestelnummer, $$emailadres, $productnummer, $aantal, $datum, 0]);
-
-    $bestelnummer++;
-    ?>
-    
+     
     <h1>Uw bestelling is afgerond. Hartelijk bedankt voor het plaatsen van uw bestelling.</h1>
     <br>
     <div class="container">
