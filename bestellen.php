@@ -78,7 +78,7 @@ if (isset($_SESSION['winkelwagen'])) {
 
     <br>
 
-    <form method="POST" action="bestelt.php">
+    <form method="POST">
         <input type="submit" name="afrondknop" value="bestelling definitief afronden"></input>
     </form>
 </div>
@@ -88,33 +88,42 @@ if (isset($_SESSION['winkelwagen'])) {
 // functie voor het toevoegen van een bestelregel aan de database
 $emailadres = $_SESSION['emailadres'];
 $datum = date("Y-m-d H:i:s");
-$bestelnummer = 0;
-$productnummer = $item['productnummer'];
-$aantal = $item['aantal'];
+
+$query4 = "SELECT MAX(bestelnummer) AS maxbestel FROM bestelregel";
+$stmt = $pdo->prepare($query4);
+$stmt->execute();
+
+while ($row = $stmt->fetch()) {
+    $bestelnummer = $row['maxbestel'];
+}
+
+
 $bestel_array = [];
 
 
 
 if (isset($_POST['afrondknop'])) {
-
-    $bestelnummer = $bestelnummer + 1;
-
+    foreach ($_SESSION['winkelwagen'] as $bestelling) {
+       
+    $query3 = "INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum) VALUES (?, ?, ?, ?, ?)";  
+    
     $bestel_array[0] = $bestelnummer;
     $bestel_array[1] = $emailadres;
-    $bestel_array[2] = $productnummer;
-    $bestel_array[3] = $aantal;
+    $bestel_array[2] = $bestelling['productnummer'];
+    $bestel_array[3] = $bestelling['aantal'];
     $bestel_array[4] = $datum;
-    //$bestel_array[5] = 0;
-
-
-    $query3 = "INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum) VALUES (?, ?, ?, ?, ?)";
+    
+    $bestelnummer++;
+    
+    
     $stmt = $pdo->prepare($query3);
     $stmt->execute($bestel_array);
-
-    $bestelnummer++;
+       print_r($bestel_array);   
+    }
+     
 }
 
-print $bestelnummer;
+
 ?>
 
 <?php include "footer.php"; ?>
