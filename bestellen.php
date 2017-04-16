@@ -101,6 +101,8 @@ while ($row = $stmt->fetch()) {
 $bestel_array = [];
 
 
+$bestelnummer+=1;
+print $bestelnummer;
 
 if (isset($_POST['afrondknop'])) {
     foreach ($_SESSION['winkelwagen'] as $bestelling) {
@@ -118,7 +120,7 @@ if (isset($_POST['afrondknop'])) {
     
     $stmt = $pdo->prepare($query3);
     $stmt->execute($bestel_array);
-       print_r($bestel_array);   
+    print_r($bestel_array);   
     }
      
 }
