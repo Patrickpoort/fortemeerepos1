@@ -57,6 +57,7 @@
     
     
     if (isset($_POST['toevoegen'])) {
+      
         $stmt = $pdo->prepare("INSERT INTO categorie (naam) VALUES (?)");
         $stmt->execute([$_POST['categorie']]);
         print "Categorie Toegevoegd! Klik opnieuw op Foto/Categorie toevoegen om je resultaten te zien!";
@@ -68,18 +69,12 @@
         $categorienaam = $row["naam"];
          print "<form method='POST'>";
          print "<tr>";
-         print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";
-         print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
+         print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";        
          print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
          print "</tr>";
          print "</form>";
     }
-    
-    if (isset($_POST['opslaan'])) {
-                    $stmt = $pdo->prepare("UPDATE categorie set naam = ? where naam = ?");
-                    $stmt->execute([$_POST['categorienaam'], $_POST['categorienaam']]);
-                }
-
+        
                 if (isset($_POST['delete'])) {
                     $stmt = $pdo->prepare("DELETE FROM categorie WHERE naam = ?");
                     $stmt->execute([$_POST['categorienaam']]);

@@ -58,11 +58,6 @@
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
 
-                //$query_check_cat = "SELECT naam FROM categorie";
-                //$check_stmt = $pdo->prepare($query_check_cat);
-                //$check_category = $check_stmt->execute();
-
-
                 while ($row = $stmt->fetch()) {
                     $productnummer = $row["productnummer"];
                     $naam = $row["naam"];
@@ -78,22 +73,7 @@
                     print "<tr>";
                     print "<td>" . "<input type='text' name='productnummer' value='$productnummer'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='naam' value='$naam'</input>" . "</td>";
-                    ?>
-                <td> 
-                    <select name="categorienaam" id="categorienaam" >
-                        <?php
-                        $stmt1 = $pdo->prepare("SELECT distinct naam FROM categorie");
-                       $stmt1->execute();
-
-                        print "<option>" . $categorienaam . "</option>";
-                       while ($row = $stmt1->fetch()) {
-                            $categorienaam = $row["naam"];
-                            print "<option value= ' " . $row['naam'] . " '>" . $row['naam'] . "</option>";
-                        }
-                        ?>                       
-                    </select>
-                </td>
-                <?php
+                    print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='omschrijving' value='$omschrijving'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='merk' value='$merk'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
@@ -110,23 +90,7 @@
                 print "<tr>";
                 print "<td>" . "<input type='text' name='productnummer' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='naam' value=''</input>" . "</td>";
-                
-                ?>
-                <td> 
-                    <select name="categorienaam" id="categorienaam">
-                        <?php
-                        $stmt1 = $pdo->prepare("SELECT distinct naam FROM categorie");
-                       $stmt1->execute();
-
-                        print "<option>" . "-" . "</option>";
-                       while ($row = $stmt1->fetch()) {
-                            $categorienaam = $row["naam"];
-                            print "<option value= ' " . $row['naam'] . " '>" . $row['naam'] . "</option>";
-                        }
-                        ?>                       
-                    </select>
-                </td> 
-                <?php
+                print "<td>" . "<input type='text' name='categorienaam' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='omschrijving' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='merk' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='type' value=''</input>" . "</td>";
@@ -140,17 +104,10 @@
 
 
                 if (isset($_POST['toevoegen'])) {
-                    if ($_POST['categorienaam'] != '-') {
-                                                        
-                    
                     $stmt = $pdo->prepare("INSERT INTO Product (productnummer, naam, categorienaam, omschrijving, merk, type, bouwjaar, voorraad, gewicht, prijs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['voorraad'], $_POST['gewicht'], $_POST['prijs']]);
-                    
-                    print ($_POST['categorienaam']);
-                } else {
-                   print "Selecteer een categorie!";
                 }
-                }
+
                 if (isset($_POST['opslaan'])) {
                     $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, voorraad = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['voorraad'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);

@@ -80,7 +80,7 @@
                     $stmt->execute([$_POST['emailadres'], $_POST['voornaam'], $_POST['achternaam'], $_POST['rechten'], $_POST['emailadres']]);
                 }
                 //footer
-                include("footer.php");
+                
                 ?>
             </table>
         </div>
