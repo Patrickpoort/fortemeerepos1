@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Categorie en Foto toevoegen</title>
+        <title>Categorie toevoegen</title>
 
         <!-- Bootstrap core CSS -->
         <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,13 @@
             <td><input type='submit' class='btn btn-success' value='Toevoegen' name='toevoegen'></input></td>;
 
     </form>
-
+    
+    <div class="klanten-container">
+            <table class="table table-striped">
+                <tr>
+                    <th>Huidige Categoriën</th>                    
+                </tr>
+    
     <?php
     
     $query = "select * from categorie order by naam asc";
@@ -52,20 +58,30 @@
     if (isset($_POST['toevoegen'])) {
         $stmt = $pdo->prepare("INSERT INTO categorie (naam) VALUES (?)");
         $stmt->execute([$_POST['categorie']]);
-        print "Categorie Toegevoegd!";
+        print "Categorie Toegevoegd! Klik opnieuw op Foto/Categorie toevoegen om je resultaten te zien!";
     }
-       ?>
-    <h5>Huidige categoriën:</h5>
-    <?php
+       
+  
     while ($row = $stmt->fetch()) {
         
         $categorienaam = $row["naam"];
-       ?>
-    <table >
-        <tr class="border_category" ><?php print $categorienaam; ?></tr>
-    </table>
-       
-        <?php
-        
+         print "<form method='POST'>";
+         print "<tr>";
+         print "<td>" . "<input type='text' name='categorienaam' value='$categorienaam'</input>" . "</td>";
+         print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
+         print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
+         print "</tr>";
+         print "</form>";
     }
+    
+    if (isset($_POST['opslaan'])) {
+                    $stmt = $pdo->prepare("UPDATE categorie set naam = ? where naam = ?");
+                    $stmt->execute([$_POST['categorienaam'], $_POST['categorienaam']]);
+                }
+
+                if (isset($_POST['delete'])) {
+                    $stmt = $pdo->prepare("DELETE FROM categorie WHERE naam = ?");
+                    $stmt->execute([$_POST['categorienaam']]);
+                    print "Categorie verwijderd! Klik opnieuw op Foto/Categorie toevoegen om je resultaten te zien!";
+                }
         ?>
