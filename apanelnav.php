@@ -23,6 +23,7 @@
                 <li><a href="klanten.php">Klanten</a> </li>
                 <li><a href="producten.php">Producten</a> </li>
                 <li><a href="CategorieAdd.php">Categorie toevoegen</a> </li>
+                <li><a href="besteloverzicht.php">Bestellingen</a> </li>
                 <li><a href="index.php">Homepagina</a> </li>
             </ul>
         </div>
