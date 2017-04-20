@@ -52,12 +52,6 @@ if (isset($_SESSION['winkelwagen'])) {
     }
 }
 
-
-
-
-
-
-
 ?>
         </tr>
         <tr>
@@ -102,7 +96,7 @@ $bestel_array = [];
 
 
 $bestelnummer+=1;
-print $bestelnummer;
+
 
 if (isset($_POST['afrondknop'])) {
     foreach ($_SESSION['winkelwagen'] as $bestelling) {
@@ -117,12 +111,25 @@ if (isset($_POST['afrondknop'])) {
     
     $bestelnummer++;
     
-    
     $stmt = $pdo->prepare($query3);
     $stmt->execute($bestel_array);
-    print_r($bestel_array);   
+    
+    $query5 = "SELECT voorraad FROM product WHERE productnummer = ?";
+    $stmt = $pdo->prepare($query5);
+    $stmt->execute(array($bestelling['productnummer']));
+    while ($row = $stmt->fetch()) {
+        $huidigeVoorraad = $row['voorraad'];
     }
-     
+    $nieuweVoorraad = $huidigeVoorraad - $bestelling['aantal'];
+    
+    $query6 = "UPDATE product SET voorraad = ? WHERE productnummer = ?";
+    $stmt = $pdo->prepare($query6);
+    $stmt->execute([$nieuweVoorraad, $bestelling['productnummer']]);
+    
+    unset($_SESSION['winkelwagen']);
+    
+    }
+    print "Bedankt voor uw bestelling";  
 }
 
 
