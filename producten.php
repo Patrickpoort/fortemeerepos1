@@ -98,7 +98,7 @@
                     print "<td>" . "<input type='text' name='merk' value='$merk'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='voorraad' value='$voorraad'</input>" . "</td>";
+                    print "<td>" . "<input type='number' name='voorraad' value='$voorraad'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='gewicht' value='$gewicht'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
@@ -131,7 +131,7 @@
                 print "<td>" . "<input type='text' name='merk' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='type' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='bouwjaar' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='voorraad' value=''</input>" . "</td>";
+                print "<td>" . "<input type='number' name='voorraad' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='gewicht' value=''</input>" . "</td>";
                 print "<td>" . "<input type='text' name='prijs' value=''</input>" . "</td>";
                 print "<td>" . "<input type='submit' class='btn btn-success' value='toevoegen' name='toevoegen'></input>" . "</td>";
