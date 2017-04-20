@@ -48,7 +48,7 @@
                     <th>Merk</th>
                     <th>Type</th>
                     <th>Bouwjaar</th>
-                    <th>Formule</th>
+                    <th>Voorraad</th>
                     <th>Gewicht</th>
                     <th>Prijs</th>
                 </tr>
@@ -71,7 +71,7 @@
                     $merk = $row["merk"];
                     $type = $row["type"];
                     $bouwjaar = $row["bouwjaar"];
-                    $formule = $row["formule"];
+                    $voorraad = $row["voorraad"];
                     $gewicht = $row["gewicht"];
                     $prijs = $row["prijs"];
                     print "<form method='POST'>";
@@ -83,7 +83,7 @@
                     print "<td>" . "<input type='text' name='merk' value='$merk'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='type' value='$type'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='bouwjaar' value='$bouwjaar'</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='formule' value='$formule'</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='voorraad' value='$voorraad'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='gewicht' value='$gewicht'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='prijs' value='$prijs'</input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
@@ -100,7 +100,7 @@
                     print "<td>" . "<input type='text' name='merk' value=''</input>" . "</td>";
                     print "<td>" . "<input type='text' name='type' value=''</input>" . "</td>";
                     print "<td>" . "<input type='text' name='bouwjaar' value=''</input>" . "</td>";
-                    print "<td>" . "<input type='text' name='formule' value=''</input>" . "</td>";
+                    print "<td>" . "<input type='text' name='voorraad' value=''</input>" . "</td>";
                     print "<td>" . "<input type='text' name='gewicht' value=''</input>" . "</td>";
                     print "<td>" . "<input type='text' name='prijs' value=''</input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-success' value='toevoegen' name='toevoegen'></input>" . "</td>";
@@ -109,17 +109,13 @@
                     
                     
                 if (isset($_POST['toevoegen'])) {
-                    $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['geiwcht'], $_POST['prijs'], $_POST['productnummer']]);
+                    $stmt = $pdo->prepare("INSERT INTO Product productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, voorraad = ?, geiwcht = ?, prijs = ? WHERE productnummer = ?");
+                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['voorraad'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
                 }
                 if (isset($_POST['opslaan'])) {
-                    $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, formule = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
-                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['formule'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
-                //if (in_array($_POST['categorienaam'], $check_category)) {
-                    //$stmt4 = $pdo->prepare("INSERT INTO categorie (naam) VALUES (?)");
-                    //$stmt4->execute($_POST ['categorienaam']);
-               //}
-                    
+                    $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, voorraad = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
+                    $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['voorraad'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
+                                   
                 }
                 
                 if (isset($_POST['delete'])) {
