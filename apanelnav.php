@@ -1,4 +1,10 @@
+<!--
+    MIT License
 
+    Copyright (c) 2016 Niels Helmantel
+
+    see LICENSE file for more information
+-->
 <nav class="navbar navbar-inverse navbar-static-top topbar">
     <div class="container-fluid">
         <div class="navbar-header">

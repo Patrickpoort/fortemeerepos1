@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+
+<!--
+    MIT License
+
+    Copyright (c) 2016 Niels Helmantel
+
+    see LICENSE file for more information
+--><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">

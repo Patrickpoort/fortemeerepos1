@@ -13,7 +13,13 @@ session_start();
 include("HTML HEAD.php");
 include "database.php";
 ?>
+<!--
+    MIT License
 
+    Copyright (c) 2016 Niels Helmantel
+
+    see LICENSE file for more information
+-->
 <!DOCTYPE Html>
 <body>
 

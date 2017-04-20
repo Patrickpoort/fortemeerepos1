@@ -129,7 +129,8 @@ if (isset($_POST['afrondknop'])) {
     unset($_SESSION['winkelwagen']);
     
     }
-    print "Bedankt voor uw bestelling";  
+    print "Bedankt voor uw bestelling";
+    
 }
 
 

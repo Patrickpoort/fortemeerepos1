@@ -1,3 +1,10 @@
+<!--
+    MIT License
+
+    Copyright (c) 2016 Niels Helmantel
+
+    see LICENSE file for more information
+-->
 <?php
 //navigatiebar
 include 'HTML HEAD.php';
