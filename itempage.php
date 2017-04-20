@@ -1,3 +1,10 @@
+<!--
+    MIT License
+
+    Copyright (c) 2016 Niels Helmantel
+
+    see LICENSE file for more information
+-->
 <!DOCTYPE html>
 <html>
 
@@ -63,6 +70,11 @@ $_SESSION['productnummer'] = $productnummer;
                     $type = $row["type"];
                     echo "<tr><td>type:</td><td>" . $type . "</td></tr>";
                 }
+                
+                if (isset($row['voorraad'])) {
+                    $voorraad = $row["voorraad"];
+                    echo "<tr><td>Aantal producten beschikbaar: </td><td>" . $voorraad . "</td></tr>";
+                }
                 $prijs = $row["prijs"];
             }
 
@@ -79,15 +91,16 @@ $_SESSION['productnummer'] = $productnummer;
         </div>
         <div class="col-md-4 boxrechts">
             <?php
+            $int = 4;
             echo "<h1>" . $naam . "</h1>";
             echo "<p>omschrijving: " . $omschrijving . "</p>";
             echo "<h3>" . $prijs . " euro</h3>";
             ?>
             <form method="POST" action="winkelwagen.php">
                 <input type="hidden" name="productnummer" value="<?php print $productnummer ?>">
-                <input type="text" name="aantal" value="aantal"><br>
+                <input type="number" name="aantal" min="1" max="<?php print $voorraad ?>" value="1"><br>
                 <input type="submit" value="Toevoegen aan winkelwagen">
-                <?php  ?>
+               
             </form>
         </div>
     </div>
