@@ -18,21 +18,25 @@ require_once ("database.php");
 <?php
 $subtotaal = 0;
 $totaal = 0;
+// zodra wordt geactiveerd -> winkelwagen geleegd
 if (isset($_GET["leeg"])) {
     unset($_SESSION["winkelwagen"]);
 }
+// haalt informatie uit itempage
 if (isset($_POST['productnummer'])) {
     $productnummer = $_POST['productnummer'];
 }
 if (isset($_POST['aantal'])) {
     $aantal = $_POST['aantal'];
 }
+// haalt prijs uit database
 if (isset($productnummer)) {
     $stmt = $pdo->prepare("SELECT prijs FROM product WHERE productnummer = ?");
     $stmt->execute(array($productnummer));
     while ($row = $stmt->fetch()) {
         $prijs = $row['prijs'];
     }
+    // maakt nieuwe winkelwagen array aan met info van hierboven
     $winkelwagen = array(
         'productnummer' => $productnummer,
         'prijs' => $prijs,
@@ -41,7 +45,7 @@ if (isset($productnummer)) {
     $_SESSION['winkelwagen'][] = $winkelwagen;
 }
 ?>
-
+<!--plaats winkelwagen array in tabel  -->
 <div class="container">
     <div class="row">
         <a href="winkelwagen.php?leeg=true">Leeg winkelwagen</a>
