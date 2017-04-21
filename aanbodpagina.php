@@ -43,7 +43,7 @@
             elseif ($_GET['merk'] != '-') {
                 $temp_array[0] = trim($_GET['merk']);
                 $query = "SELECT * FROM product WHERE merk = ?";
-            } elseif ($_GET['bouwjaar'] != '-') {
+            } if ($_GET['bouwjaar'] != '-') {
                 $temp_array[0] = $_GET['bouwjaar'];
                 $query = "SELECT * FROM product WHERE bouwjaar = ?";
             } elseif ($_GET['onderdeel'] != '-') {
