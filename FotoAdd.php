@@ -32,9 +32,9 @@
     include("apanelnav.php");
     ?>
 
-    <h4>Productfoto Toevoegen</h4> <br>
+    <h4>Productfoto Toevoegen</h4>
     
-    <label style="color:red">LET OP! Voeg voordat u een foto upload eerst een product toe! Ga naar 'Producten' in de navigatiebalk om dat te doen! Upload daarna pas uw foto!</label> <br>
+    <label style="color:red">LET OP! Voeg voordat u een foto upload eerst een product toe! Ga naar 'Producten' in de navigatiebalk om dat te doen! Upload daarna pas uw foto! Uitsluitend .JPG bestanden!</label> <br>
     
     <?php
    
