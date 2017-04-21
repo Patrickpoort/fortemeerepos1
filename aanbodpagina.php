@@ -20,7 +20,7 @@
 
         <?php
 
-        require_once 'database.php';
+        include 'database.php';
 
         //cookies.
         include("include/cookies.php");
@@ -37,27 +37,27 @@
                 $temp_array[0] = "%" . $_GET['zoek'] . "%";
                 $temp_array[1] = "%" . $_GET['zoek'] . "%";
             }
-            if ($_GET['merk'] != '-') {
+            elseif ($_GET['merk'] != '-') {
                 $temp_array[0] = trim($_GET['merk']);
                 $query = "SELECT * FROM product WHERE merk = ?";
-            } if ($_GET['bouwjaar'] != '-') {
+            } elseif ($_GET['bouwjaar'] != '-') {
                 $temp_array[0] = $_GET['bouwjaar'];
                 $query = "SELECT * FROM product WHERE bouwjaar = ?";
-            } if ($_GET['onderdeel'] != '-') {
+            } elseif ($_GET['onderdeel'] != '-') {
                 $temp_array[0] = trim($_GET['onderdeel']);
                 $query = "SELECT * FROM product WHERE categorienaam = ?";
             }
-            if ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
+            elseif ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
                 $temp_array[0] = trim($_GET['merk']);
                 $temp_array[1] = $_GET['bouwjaar'];
                 $query = "SELECT * FROM product WHERE merk = ? AND bouwjaar = ?";
             }
-            if ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
+            elseif ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
                 $temp_array[0] = trim($_GET['merk']);
                 $temp_array[1] = trim($_GET['onderdeel']);
                 $query = "SELECT * FROM product WHERE merk = ? AND categorienaam = ?";
             }
-            if ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
+            elseif ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
                 $temp_array[0] = $_GET['bouwjaar'];
                 $temp_array[1] = trim($_GET['onderdeel']);
                 $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
