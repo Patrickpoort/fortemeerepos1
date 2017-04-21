@@ -96,6 +96,7 @@
                                         print "<option value= ' " . $row['merk'] . " '>" . $row['merk'] . "</option>";
                                     }
                                     ?>
+                                    <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
                                     <script type="text/javascript">
                                         document.getElementById('merk').value = "<?php print $_GET['merk']; ?>";
                                     </script> 
@@ -113,6 +114,7 @@
                                         print "<option value= ' " . $row['bouwjaar'] . " '>" . $row['bouwjaar'] . "</option>";
                                     }
                                     ?>
+                                    <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
                                     <script type="text/javascript">
                                         document.getElementById('bouwjaar').value = "<?php print $_GET['bouwjaar']; ?>";
                                     </script>
@@ -130,6 +132,7 @@
                                         print "<option value= ' " . $row['categorienaam'] . " '>" . $row['categorienaam'] . "</option>";
                                     }
                                     ?>
+                                    <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
                                     <script type="text/javascript">
                                         document.getElementById('onderdeel').value = "<?php print $_GET['onderdeel']; ?>";
                                     </script>
