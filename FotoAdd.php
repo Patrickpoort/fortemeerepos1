@@ -32,7 +32,9 @@
     include("apanelnav.php");
     ?>
 
-    <h4>Productfoto Toevoegen</h4>
+    <h4>Productfoto Toevoegen</h4> <br>
+    
+    <label style="color:red">LET OP! Voeg voordat u een foto upload eerst een product toe! Ga naar 'Producten' in de navigatiebalk om dat te doen! Upload daarna pas uw foto!</label> <br>
     
     <?php
     
@@ -86,6 +88,7 @@ $newfilename = "img-" . $_POST['productnummer'];
         $dst_path = 'images/'; // The path where the image will be moved to.
 
         uploadImage($img_ff, $dst_path, $dst_img);
+        print "Gelukt! Uw foto is toegevoegd!";
     }
 
 
@@ -95,10 +98,10 @@ $newfilename = "img-" . $_POST['productnummer'];
 <!-- // Form needed to upload the image.
      // You can change the name of the form, dont forget to change that in the variable $img_ff.
      // You can change the action file. (In this case i use the same name as this file.)-->
-<form enctype="multipart/form-data" name="image" method="post" action="FotoAdd.php">
+<form enctype="multipart/form-data" name="image" method="post" action="FotoAdd.php" class="FotoAdd_form">
     <label for="image">Productnummer:</label> 
     <input type="text" id="productnummer" name='productnummer'> <br>
-    <label for="image">Image:</label>   
+    <label for="image">Uw foto:</label>   
     <input type="file" id="image" name="image">
     <br />
     <input type="submit" value="Upload" />&nbsp;<input type="reset" value="Reset" />

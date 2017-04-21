@@ -33,7 +33,7 @@
     include("apanelnav.php");
     ?>
 
-    <h4>Categorie Toevoegen</h4>
+    <h4>Categorie Toevoegen</h4> <br>    
     <form method="POST">
         <tr>
             <td><input type='text' name='categorie' value=''></input></td>;
@@ -60,7 +60,7 @@
       
         $stmt = $pdo->prepare("INSERT INTO categorie (naam) VALUES (?)");
         $stmt->execute([$_POST['categorie']]);
-        print "Categorie Toegevoegd! Klik opnieuw op Foto/Categorie toevoegen om je resultaten te zien!";
+        print "Categorie Toegevoegd! Klik opnieuw op 'Categorie toevoegen' in de navigatiebalk om je resultaten te zien!";
     }
        
   

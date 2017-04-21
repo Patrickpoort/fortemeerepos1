@@ -39,6 +39,7 @@
     ?>
     <body>
         <div class="klanten-container">
+            <label style="color:red">LET OP! Als de categorie die u wilt gebruiken bij het toevoegen of wijzigen van een product nog niet bestaat, voeg deze dan eerst toe bij 'Categorie toevoegen' in de navigatiebalk!</label>
             <table class="table table-striped">
                 <tr>
                     <th>Productnummer</th>
@@ -102,10 +103,28 @@
                 print "</tr>";
                 print "</form>";
 
+                $results = array();
+                $query = "SELECT naam FROM categorie";
+
+                $stmt = $pdo->prepare($query);               
+                $stmt->execute();
+                
+                while ($row = $stmt->fetch()) {
+                    $results[] = $row['naam'];
+                }
+                
 
                 if (isset($_POST['toevoegen'])) {
+                    
+                  if (in_array(($_POST['categorienaam']), $results)) { 
+                    
                     $stmt = $pdo->prepare("INSERT INTO Product (productnummer, naam, categorienaam, omschrijving, merk, type, bouwjaar, voorraad, gewicht, prijs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['voorraad'], $_POST['gewicht'], $_POST['prijs']]);
+                    print "Gelukt! Druk nogmaals op 'Producten' in de navigatiebalk om uw resultaat te zien!";
+                } else {
+                    print "FOUT! Categorienaam niet gevonden! Controleer uw spelling en of u de categorie heeft toegevoegd!";
+                }
+                
                 }
 
                 if (isset($_POST['opslaan'])) {

@@ -285,15 +285,17 @@
 .myrow > * {
     float: none;
     display: inline-block;
-    font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
+    font-size: 14px; 
 }
 .myrow > *:last-child {
     vertical-align: bottom;
 }
 .myrow p:last-child {
-    margin-bottom: 0; /* optional */
+    margin-bottom: 0; 
 }
 
-.border_category tr {
-    border: 1px black solid;
+/* Foto toevoegen pagina */
+
+.FotoAdd_waarschuwing {
+    color: red;
 }
