@@ -39,6 +39,7 @@
     ?>
     <body>
         <div class="klanten-container">
+            <!-- Tabel voor de gegevens-->
             <label style="color:red">LET OP! Als de categorie die u wilt gebruiken bij het toevoegen of wijzigen van een product nog niet bestaat, voeg deze dan eerst toe bij 'Categorie toevoegen' in de navigatiebalk!</label>
             <table class="table table-striped">
                 <tr>
@@ -54,6 +55,7 @@
                     <th>Prijs</th>
                 </tr>
                 <?php
+                // Geeft bestaande producten weer in de tabel.
                 $query = "select * from Product order by productnummer asc";
 
                 $stmt = $pdo->prepare($query);
@@ -87,6 +89,7 @@
                     print "</tr>";
                     print "</form>";
                 }
+                // Maakt een nieuwe lege laag voor het nieuwe product
                 print "<form method='POST'>";
                 print "<tr>";
                 print "<td>" . "<input type='text' name='productnummer' value=''</input>" . "</td>";
@@ -103,6 +106,7 @@
                 print "</tr>";
                 print "</form>";
 
+                 // Haalt alle categorienamen op uit de database en zet ze in een array.   
                 $results = array();
                 $query = "SELECT naam FROM categorie";
 
@@ -113,9 +117,9 @@
                     $results[] = $row['naam'];
                 }
                 
-
+                // Voegt het nieuwe product toe
                 if (isset($_POST['toevoegen'])) {
-                    
+                    // Controleert of categorie wel bestaat d.m.v. die array.
                   if (in_array(($_POST['categorienaam']), $results)) { 
                     
                     $stmt = $pdo->prepare("INSERT INTO Product (productnummer, naam, categorienaam, omschrijving, merk, type, bouwjaar, voorraad, gewicht, prijs) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -126,12 +130,18 @@
                 }
                 
                 }
-
+                // Gewijzigde gegevens opslaan
                 if (isset($_POST['opslaan'])) {
+                    // Controleert of categorie wel bestaat d.m.v. die array.
+                     if (in_array(($_POST['categorienaam']), $results)) {                        
+                     
                     $stmt = $pdo->prepare("UPDATE Product set productnummer = ?, naam = ?, categorienaam = ?, omschrijving = ?, merk = ?, type = ?, bouwjaar = ?, voorraad = ?, gewicht = ?, prijs = ? WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer'], $_POST['naam'], $_POST['categorienaam'], $_POST['omschrijving'], $_POST['merk'], $_POST['type'], $_POST['bouwjaar'], $_POST['voorraad'], $_POST['gewicht'], $_POST['prijs'], $_POST['productnummer']]);
-                }
-
+                    } else {
+                     print "FOUT! Categorienaam niet gevonden! Controleer uw spelling en of u de categorie heeft toegevoegd!";   
+                    }
+                     }
+                // Gegevens verwijderen
                 if (isset($_POST['delete'])) {
                     $stmt = $pdo->prepare("DELETE FROM Product WHERE productnummer = ?");
                     $stmt->execute([$_POST['productnummer']]);

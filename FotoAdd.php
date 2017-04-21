@@ -37,30 +37,24 @@
     <label style="color:red">LET OP! Voeg voordat u een foto upload eerst een product toe! Ga naar 'Producten' in de navigatiebalk om dat te doen! Upload daarna pas uw foto!</label> <br>
     
     <?php
-    
-   // Summary:
-// Function to upload an image from the formfield ($img_ff) to a specified path ($dst_path), check the image and give it an
-// other name ($dst_img).
-
-//Script start here.
+   
 
 function uploadImage($img_ff, $dst_path, $dst_img){
 $newfilename = "img-" . $_POST['productnummer'];
  $var1 = explode(".", $dst_img);
     $var2 = end($var1);
     $dst_ext = strtolower($var2);
-    //Get variables for the function.
-            //complete path of the destination image.
+    //bestandsnaam zonder extentie
     $dst_cpl = $dst_path . $newfilename . "." . $dst_ext;
-            //name without extension of the destination image.
+            
     $dst_name = preg_replace('/\.[^.]*$/', '', $dst_img);
-            //extension of the destination image without a "." (dot).
+          
    
    
 
 
 
-        //upload the file and move it to the specified folder.
+        //Bestand uploaden
     
     move_uploaded_file($_FILES[$img_ff]['tmp_name'], $dst_cpl);
 

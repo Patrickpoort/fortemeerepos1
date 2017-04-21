@@ -19,7 +19,7 @@
     <body>
 
         <?php
-
+        //database include
         include 'database.php';
 
         //cookies.
@@ -27,16 +27,19 @@
 
         //navigation bar.
         include("Navbar.php");
-
+        
+        //Resultaten weergeven
         $query = "SELECT * FROM product";
         $temp_array = [];
         if (isset($_GET['submit'])) {
+            //zoekbalk
             if ($_GET['zoek'] != '') {
 
                 $query = "SELECT * FROM product WHERE naam LIKE ? OR omschrijving LIKE ?";
                 $temp_array[0] = "%" . $_GET['zoek'] . "%";
                 $temp_array[1] = "%" . $_GET['zoek'] . "%";
             }
+            //dropdownlijstjes combinaties
             elseif ($_GET['merk'] != '-') {
                 $temp_array[0] = trim($_GET['merk']);
                 $query = "SELECT * FROM product WHERE merk = ?";
@@ -83,6 +86,7 @@
                             <li class="aanbod-dropdown-merk"> Automerk:<Br>
                                 <select name="merk" id="merk">
                                     <?php
+                                    //dropdownlijstje merk
                                     $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
                                     $stmt1->execute();
 
@@ -99,6 +103,7 @@
                             <li class="aanbod-dropdown-bouwjaar"> Bouwjaar:<Br>
                                 <select name="bouwjaar" id="bouwjaar">
                                     <?php
+                                    //dropdownlijstje bouwjaar
                                     $stmt2 = $pdo->prepare("SELECT distinct bouwjaar FROM product");
                                     $stmt2->execute();
 
@@ -115,6 +120,7 @@
                             <li class="aanbod-dropdown-onderdeel"> Type onderdeel:<Br>
                                 <select name="onderdeel" id="onderdeel">
                                     <?php
+                                    //dropdownlijstje type onderdeel
                                     $stmt3 = $pdo->prepare("SELECT distinct categorienaam FROM product");
                                     $stmt3->execute();
 
@@ -134,6 +140,7 @@
                     </li>
                 </ul>
             </div>
+            <!-- Tabel HTML -->
             <div class="container">
                 <table class="col-md-9">
                     <tr>

@@ -104,10 +104,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_count = 1;
     }
     else{
-        
+        //Als alles goed is gegaan worden de gegeven in de database gezet.
         $regist_array[0] = $_POST['voornaam'];
         $regist_array[1] = $_POST['achternaam'];
         $regist_array[2] = $_POST['emailadres'];
+        // Hashed het wachtwoord
         $regist_array[3] = hash('SHA256' ,($_POST['wachtwoord']));
         $regist_array[4] = 1;
      

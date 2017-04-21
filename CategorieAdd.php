@@ -48,14 +48,14 @@
                 </tr>
     
     <?php
-    
+    // Geeft bestaande categorien weer
     $query = "select * from categorie order by naam asc";
                 
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
     
     
-    
+    // Voegt een ingevoerde categorie toe.
     if (isset($_POST['toevoegen'])) {
       
         $stmt = $pdo->prepare("INSERT INTO categorie (naam) VALUES (?)");
@@ -63,7 +63,7 @@
         print "Categorie Toegevoegd! Klik opnieuw op 'Categorie toevoegen' in de navigatiebalk om je resultaten te zien!";
     }
        
-  
+  // Zet de data in een tabel
     while ($row = $stmt->fetch()) {
         
         $categorienaam = $row["naam"];
@@ -74,7 +74,7 @@
          print "</tr>";
          print "</form>";
     }
-        
+        // voor de delete knop.
                 if (isset($_POST['delete'])) {
                     $stmt = $pdo->prepare("DELETE FROM categorie WHERE naam = ?");
                     $stmt->execute([$_POST['categorienaam']]);
