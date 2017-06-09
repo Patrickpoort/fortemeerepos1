@@ -90,33 +90,33 @@
         }
         //dropdownlijstjes combinaties
         // Vergelijkt de verschillende combinaties van merk, bouwjaar en categorie met de data uit de database en genereerd een query.
-        elseif ($_GET['merk'] != '-') {
-        $temp_array[0] = trim($_GET['merk']);
-        $query = "SELECT * FROM product WHERE merk = ?";
-        } elseif ($_GET['bouwjaar'] != '-') {
-        $temp_array[0] = $_GET['bouwjaar'];
-        $query = "SELECT * FROM product WHERE bouwjaar = ?";
-        } elseif ($_GET['onderdeel'] != '-') {
-        $temp_array[0] = trim($_GET['onderdeel']);
-        $query = "SELECT * FROM product WHERE categorienaam = ?";
-        } elseif ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
-        $temp_array[0] = trim($_GET['merk']);
-        $temp_array[1] = $_GET['bouwjaar'];
-        $query = "SELECT * FROM product WHERE merk = ? AND bouwjaar = ?";
-        } elseif ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
-        $temp_array[0] = trim($_GET['merk']);
-        $temp_array[1] = trim($_GET['onderdeel']);
-        $query = "SELECT * FROM product WHERE merk = ? AND categorienaam = ?";
-        } elseif ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
-        $temp_array[0] = $_GET['bouwjaar'];
-        $temp_array[1] = trim($_GET['onderdeel']);
-        $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
-        }
+//        elseif ($_GET['merk'] != '-') {
+//        $temp_array[0] = trim($_GET['merk']);
+//        $query = "SELECT * FROM product WHERE merk = ?";
+//        } elseif ($_GET['bouwjaar'] != '-') {
+//        $temp_array[0] = $_GET['bouwjaar'];
+//        $query = "SELECT * FROM product WHERE bouwjaar = ?";
+//        } elseif ($_GET['onderdeel'] != '-') {
+//        $temp_array[0] = trim($_GET['onderdeel']);
+//        $query = "SELECT * FROM product WHERE categorienaam = ?";
+//        } elseif ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
+//        $temp_array[0] = trim($_GET['merk']);
+//        $temp_array[1] = $_GET['bouwjaar'];
+//        $query = "SELECT * FROM product WHERE merk = ? AND bouwjaar = ?";
+//        } elseif ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
+//        $temp_array[0] = trim($_GET['merk']);
+//        $temp_array[1] = trim($_GET['onderdeel']);
+//        $query = "SELECT * FROM product WHERE merk = ? AND categorienaam = ?";
+//        } elseif ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
+//        $temp_array[0] = $_GET['bouwjaar'];
+//        $temp_array[1] = trim($_GET['onderdeel']);
+//        $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
+//        }
         
         // query wordt hier uitgevoerd
         $stmt = $pdo->prepare($query);
-        $stmt->execute($temp_value);
-
+        $stmt->execute($temp_value); 
+        
         print_r($temp_value);
         print $query;
         ?>
@@ -139,7 +139,7 @@
 
                                 <select name="merk" id="merk" >
                                     <?php
-//dropdownlijstje merk
+                                    //dropdownlijstje merk. Vult het lijst je met data uit de kolom 'merk' in de database.
                                     $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
                                     $stmt1->execute();
 
@@ -148,21 +148,8 @@
                                         $merk = $row["merk"];
                                         print "<option value= ' " . $row['merk'] . " '>" . $row['merk'] . "</option>";
                                     }
-                                    ?>
-
-                                    <select name="merk" id="merk">
-                                        <?php
-//dropdownlijstje merk. Vult het lijst je met data uit de kolom 'merk' in de database.
-                                        $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
-                                        $stmt1->execute();
-
-                                        print "<option>" . "-" . "</option>";
-                                        while ($row = $stmt1->fetch()) {
-                                            $merk = $row["merk"];
-                                            print "<option value= ' " . $row['merk'] . " '>" . $row['merk'] . "</option>";
-                                        }
-                                        ?>
-
+                                    ?>                                
+                              
                                         <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
                                         <script type="text/javascript">
                                             document.getElementById('merk').value = "<?php print $_GET['merk']; ?>";
