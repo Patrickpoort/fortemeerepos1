@@ -54,6 +54,7 @@
                                         // Verwijzing naar gebruiker.
                                         $stmt->execute(array('user'=>$user));
                                         
+                                        // Stopt ingevulde waarden in variabelen en vult deze in in een form.
                                         while ($row = $stmt->fetch()) {
                                         $fwoonplaats = $row["f_woonplaats"];
                                         $fstraatnaam = $row["f_straatnaam"];

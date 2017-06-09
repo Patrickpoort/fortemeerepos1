@@ -20,6 +20,7 @@
     </head>
     <body>
         <?php
+        // Logt de gebruiker uit en verwijst daarna naar de inlogpagina.
         session_start();
         session_destroy();
         header("location:login.php");

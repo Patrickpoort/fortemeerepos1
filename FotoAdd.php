@@ -38,7 +38,7 @@
     
     <?php
    
-
+// creërt een bestandsnaam
 function uploadImage($img_ff, $dst_path, $dst_img){
 $newfilename = "img-" . $_POST['productnummer'];
  $var1 = explode(".", $dst_img);
@@ -61,7 +61,7 @@ $newfilename = "img-" . $_POST['productnummer'];
         //get type of image.
     $dst_type = exif_imagetype($dst_cpl);
 
-        //Checking extension and imagetype of the destination image and delete if it is wrong.
+       //controleerd de exentie van het bestand en verwijdert het wanneer het niet voldoet.
     if(( (($dst_ext =="jpg") && ($dst_type =="2")) || (($dst_ext =="jpeg") && ($dst_type =="2")) || (($dst_ext =="gif") && ($dst_type =="1")) || (($dst_ext =="png") && ($dst_type =="3") )) == false){
         unlink($dst_cpl);
         die('<p>The file "'. $dst_img . '" with the extension "' . $dst_ext . '" and the imagetype "' . $dst_type . '" is not a valid image. Please upload an image with the extension JPG, JPEG, PNG or GIF and has a valid image filetype.</p>');
@@ -75,11 +75,11 @@ $newfilename = "img-" . $_POST['productnummer'];
         // If the form is posted do this:
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-            //Variables needed for the function.
-        $img_ff = 'image'; // Form name of the image
+            //Variable voor de functie
+        $img_ff = 'image'; // Form naam van de afbeelding
         
-        $dst_img = strtolower($_FILES[$img_ff]['name']); // This name will be given to the image. (in this case: lowercased original image name uploaded by user).
-        $dst_path = 'images/'; // The path where the image will be moved to.
+        $dst_img = strtolower($_FILES[$img_ff]['name']); // Dit creërt de uiteindelijke naam van het bestand.
+        $dst_path = 'images/'; // Map waar de afbeelding terecht komt.
 
         uploadImage($img_ff, $dst_path, $dst_img);
         print "Gelukt! Uw foto is toegevoegd!";
