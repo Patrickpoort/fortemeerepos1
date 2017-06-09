@@ -127,8 +127,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $regist_array2[8] = $_POST['bedrijfsstraat'];
         $regist_array2[9] = $_POST['bedrijfshuisnummer'];
         $regist_array2[10] = $_POST['bedrijfspostcode'];
+        $regist_array2[11] = 1;
         
-        $query2 = "INSERT INTO klant (emailadres, f_woonplaats, f_straatnaam, f_huisnummer, f_postcode, telefoonnummer, bedrijfsnaam, b_woonplaats, b_straatnaam, b_huisnummer, b_postcode ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query2 = "INSERT INTO klant (emailadres, f_woonplaats, f_straatnaam, f_huisnummer, f_postcode, telefoonnummer, bedrijfsnaam, b_woonplaats, b_straatnaam, b_huisnummer, b_postcode, actief ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt2 = $pdo->prepare($query2);
         $stmt2->execute($regist_array2);
         print "U bent geregistreerd! Klik op 'Inloggen' in de navigatiebalk om in te loggen!";
