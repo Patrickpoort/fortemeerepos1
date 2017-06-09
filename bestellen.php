@@ -63,7 +63,7 @@ if (isset($_SESSION['winkelwagen'])) {
         </tr>
     </table>
 </div>
-
+<!--terug naar winkelwagen knop-->
 <div class="container">
     <form action="winkelwagen.php">
         <input name="winkelwagenknop" value="Terug naar winkelwagen" type="submit">
@@ -71,7 +71,7 @@ if (isset($_SESSION['winkelwagen'])) {
 
 
     <br>
-
+<!--invoeren bestelling knop-->
     <form method="POST">
         <input type="submit" name="afrondknop" value="bestelling definitief afronden"></input>
     </form>
@@ -79,10 +79,10 @@ if (isset($_SESSION['winkelwagen'])) {
 
 
 <?php
-// functie voor het toevoegen van een bestelregel aan de database
+
 $emailadres = $_SESSION['emailadres'];
 $datum = date("Y-m-d H:i:s");
-
+// laatste bestelnummer uit de database halen
 $query4 = "SELECT MAX(bestelnummer) AS maxbestel FROM bestelregel";
 $stmt = $pdo->prepare($query4);
 $stmt->execute();
@@ -94,13 +94,14 @@ while ($row = $stmt->fetch()) {
 
 $bestel_array = [];
 
-
+// laatste bestelnummer ophogen met +1
 $bestelnummer+=1;
 
 
 if (isset($_POST['afrondknop'])) {
+    // doorlopen van alle producten in winkelwagen om toe te voegen aan de database
     foreach ($_SESSION['winkelwagen'] as $bestelling) {
-       
+    // bestelregel invoeren in database   
     $query3 = "INSERT INTO bestelregel (bestelnummer, emailadres, productnummer, aantal, datum) VALUES (?, ?, ?, ?, ?)";  
     
     $bestel_array[0] = $bestelnummer;
@@ -109,11 +110,13 @@ if (isset($_POST['afrondknop'])) {
     $bestel_array[3] = $bestelling['aantal'];
     $bestel_array[4] = $datum;
     
+    // per bestelling het bestelnummer ophogen met 1
     $bestelnummer++;
     
     $stmt = $pdo->prepare($query3);
     $stmt->execute($bestel_array);
     
+    // voorraad aanpassen na plaatsen bestelling
     $query5 = "SELECT voorraad FROM product WHERE productnummer = ?";
     $stmt = $pdo->prepare($query5);
     $stmt->execute(array($bestelling['productnummer']));
@@ -126,11 +129,14 @@ if (isset($_POST['afrondknop'])) {
     $stmt = $pdo->prepare($query6);
     $stmt->execute([$nieuweVoorraad, $bestelling['productnummer']]);
     
+    // winkelwagen leegmaken na plaatsen bestelling
     unset($_SESSION['winkelwagen']);
     
     }
     print "Bedankt voor uw bestelling";
-    
+    ?>
+    <script type="text/javascript">location.href = 'bestelt.php'; </script>
+    <?php
 }
 
 

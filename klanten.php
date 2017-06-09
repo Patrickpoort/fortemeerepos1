@@ -52,6 +52,7 @@
                     <th>Bedrijf huisnummer</th>
                     <th>Bedrijf postcode</th>
                     <th>Telefoonnummer</th>
+                    <th>Actief</th>
                     <th>Opslaan</th>
                     <th>Delete</th>
                 </tr>
@@ -73,6 +74,7 @@
                     $bhuisnummer = $row["b_huisnummer"];
                     $bpostcode = $row["b_postcode"];
                     $telefoonnummer = $row["telefoonnummer"];
+                    $actief = $row['actief'];
 
                     print "<form method='POST'>";
                     print "<tr>";
@@ -87,6 +89,7 @@
                     print "<td>" . "<input type='text' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='b_postcode' value='$bpostcode'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
+                    print "<td>" . "<input type='number' name='actief' value='$actief'" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
                     print "</tr>";
@@ -96,13 +99,15 @@
 
                 if (isset($_POST['opslaan'])) {
                     // update emailadres, bedrijfsnaam, woonplaats, straatnaam, huisnummer, postcode, bwoonplaats, bstraatnaam, bhuisnummer, bpostcode, telefoonnummer.
-                    $stmt = $pdo->prepare("UPDATE klant set  emailadres = ?, bedrijfsnaam = ?, f_woonplaats = ?, f_straatnaam = ?, f_huisnummer = ?, f_postcode = ?, b_woonplaats = ?, b_straatnaam = ?, b_huisnummer = ?, b_postcode = ?, telefoonnummer = ? WHERE emailadres = ?");
+                    $stmt = $pdo->prepare("UPDATE klant set  emailadres = ?, bedrijfsnaam = ?, f_woonplaats = ?, f_straatnaam = ?, f_huisnummer = ?, f_postcode = ?, b_woonplaats = ?, b_straatnaam = ?, b_huisnummer = ?, b_postcode = ?, telefoonnummer = ?, actief = ? WHERE emailadres = ?");
                     // vraag alle klanten waar de searchstring in voorkomt
-                    $stmt->execute([$_POST['emailadres'], $_POST['bedrijfsnaam'], $_POST['f_woonplaats'], $_POST['f_straatnaam'], $_POST['f_huisnummer'], $_POST['f_postcode'], $_POST['b_woonplaats'], $_POST['b_straatnaam'], $_POST['b_huisnummer'], $_POST['b_postcode'], $_POST['telefoonnummer'], $_POST['emailadres']]);
+                    $stmt->execute([$_POST['emailadres'], $_POST['bedrijfsnaam'], $_POST['f_woonplaats'], $_POST['f_straatnaam'], $_POST['f_huisnummer'], $_POST['f_postcode'], $_POST['b_woonplaats'], $_POST['b_straatnaam'], $_POST['b_huisnummer'], $_POST['b_postcode'], $_POST['telefoonnummer'], $_POST['actief'], $_POST['emailadres']]);
                 }
+                // soft delete (klant wordt inactief wanneer op delete is gedrukt)
                 if (isset($_POST['delete'])) {
                     // delete emailadres, bedrijfsnaam, woonplaats, straatnaam, huisnummer, postcode, bwoonplaats, bstraatnaam, bhuisnummer, bpostcode, telefoonnummer.
-                    $stmt = $pdo->prepare("DELETE FROM klant WHERE emailadres = ?");
+                    $stmt = $pdo->prepare("UPDATE klant SET actief = 0 WHERE emailadres = ?");
+                    
                     // vraag alle klanten waar de searchstring in voorkomt
                     $stmt->execute([$_POST['emailadres']]);
                 }
