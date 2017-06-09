@@ -40,7 +40,7 @@
     <body>
         <div class="klanten-container">
             <!-- Tabel voor de gegevens-->
-            <label style="color:red">LET OP! Als de categorie die u wilt gebruiken bij het toevoegen of wijzigen van een product nog niet bestaat, voeg deze dan eerst toe bij 'Categorie toevoegen' in de navigatiebalk!</label>
+            <label style="color:red">LET OP! Als de categorie die u wilt gebruiken bij het toevoegen of wijzigen van een product nog niet bestaat, voeg deze dan eerst toe bij 'Categorie toevoegen' in de navigatiebalk!<br></label>
             <table class="table table-striped">
                 <tr>
                     <th>Productnummer</th>

@@ -294,5 +294,10 @@
     margin-bottom: 0; 
 }
 
-/* Foto toevoegen pagina */
+/* Contactpagina */
+
+.container .contact  {
+    font-size: 200%;
+}
+
 
