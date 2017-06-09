@@ -79,10 +79,10 @@
                 $user = $_POST['emailadres'];
                 $pass = hash('SHA256' ,($_POST['pass']));
                 // checked database op ingevoerde waardes.
-                $sql2 = "SELECT emailadres, rechten FROM account WHERE wachtwoord='" . $pass . "' AND emailadres='" . $user . "'";
-                if ($res = $pdo->query($sql2)) {
-                    if ($res->rowCount() > 0) {
-                        $result = $res->fetch(PDO::FETCH_ASSOC);
+                $stmt = $pdo->prepare("SELECT emailadres, rechten FROM account WHERE wachtwoord= ? AND emailadres= ?");
+                if ($res = $stmt->execute(array($pass, $user))) {
+                    if ($stmt->rowCount() > 0) {
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
                         $_SESSION['rechten'] = $result["rechten"];
                         $_SESSION['emailadres'] = $user;
                         print ($result["rechten"]);

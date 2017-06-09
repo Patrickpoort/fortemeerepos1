@@ -74,7 +74,7 @@
          print "</tr>";
          print "</form>";
     }
-        // voor de delete knop.
+        // Verwijderd data uit de database.
                 if (isset($_POST['delete'])) {
                     $stmt = $pdo->prepare("DELETE FROM categorie WHERE naam = ?");
                     $stmt->execute([$_POST['categorienaam']]);

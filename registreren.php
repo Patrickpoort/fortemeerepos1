@@ -8,12 +8,14 @@
 <?php
 //navigatiebar
 include 'HTML HEAD.php';
-//Database.
+//Database connectie.
 include 'database.php';
+// Startvariabelen
 $regist_array   = [];
 $regist_array2  = [];
 $errors         = [];
 $error_count    = 0;
+// Slaat ingevulde informatie op in variabelen.
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = ($_POST['emailadres']);
     $first_name = ($_POST['voornaam']);
@@ -32,49 +34,59 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bedrijfshuisnummer = ($_POST['bedrijfshuisnummer']);
     $bedrijfshpostcode = ($_POST['bedrijfspostcode']);
    
-    
+    // Zoekt of het ingevulde e-mailadres al in de database voorkomt
     $query = $pdo->prepare("SELECT emailadres FROM account WHERE emailadres = :emailadres");
     $query->execute(array(':emailadres' => $email));
     $result = $query->fetchAll(PDO::FETCH_OBJ);
-    if (count($result)) { // Controleer het email adres
+    //Foutmelding als er een resultaat terugkomt
+    if (count($result)) { 
         $errors[] = 'Dit e-mailadres is al in gebruik.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($first_name)) {
         $errors[] = 'Vul a.u.b. uw voornaam in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($last_name)) {
         $errors[] = 'Vul a.u.b. uw achternaam in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($email)) {
         $errors[] = 'Vul a.u.b. uw e-mailadres in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($passw)) {
         $errors[] = 'Vul a.u.b. een wachtwoord in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($pass_rep)) {
         $errors[] = 'Herhaal a.u.b. uw wachtwoord.';
         $error_count = 1;
     }
-    elseif (!ctype_alpha(str_replace(array(' ', "'", '-'), '', $first_name)) && !empty($first_name)) { // voornaam validator.
+    // Foutmelding als dit veld leeg is. En controleert of er geen vreemde tekens worden gebruikt.
+    elseif (!ctype_alpha(str_replace(array(' ', "'", '-'), '', $first_name)) && !empty($first_name)) { 
         $errors[] = 'Uw voornaam is niet geldig.';
         $error_count = 1;
         $first_name = '';
     }
-    elseif (!ctype_alpha(str_replace(array(' ', "'", '-'), '', $last_name)) && !empty($first_name)) { // achternaam validator.
+    // Foutmelding als dit veld leeg is. En controleert of er geen vreemde tekens worden gebruikt.
+    elseif (!ctype_alpha(str_replace(array(' ', "'", '-'), '', $last_name)) && !empty($first_name)) { 
         $errors[] = 'Uw achternaam is niet geldig.';
         $error_count = 1;
         $last_name = '';
     }
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { // Email validator.
+    // Controleert of er een geldig emailadres is ingevuld.
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) { 
         $errors[] = 'Uw e-mailadres is niet geldig.';
         $error_count = 1;
         $email = '';
     }
+    // Controleert of er genoeg tekens gebruikt worden.
     elseif (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,20}$/', $passw) && !empty($passw) && !empty($pass_rep)) { // Pass validator.
         $errors[] = 'Uw wachtwoord moet minimaal 1 teken en 1 nummer bevatten, tussen de 8 en 20 tekens lang zijn en mag alleen deze !@#$% speciale tekens bevatten.';
         $error_count = 1;
@@ -83,39 +95,44 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'De wachtwoorden komen niet overeen.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($woonplaats)) { 
         $errors[] = 'Vul a.u.b. uw woonplaats in';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($straatnaam)) {
         $errors[] = 'Vul a.u.b. een straatnaam in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($huisnummer)) {
         $errors[] = 'Vul a.u.b. uw huisnummer in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($postcode)) {
         $errors[] = 'Vul a.u.b. uw postcode in.';
         $error_count = 1;
     }
+    // Foutmelding als dit veld leeg is.
     elseif (empty($telnummer)) {
         $errors[] = 'Vul a.u.b. uw telefoonnummer in.';
         $error_count = 1;
     }
     else{
-        //Als alles goed is gegaan worden de gegeven in de database gezet.
+        //Als alles goed is gegaan worden de gegeven in een array gezet.
         $regist_array[0] = $_POST['voornaam'];
         $regist_array[1] = $_POST['achternaam'];
         $regist_array[2] = $_POST['emailadres'];
         // Hashed het wachtwoord
         $regist_array[3] = hash('SHA256' ,($_POST['wachtwoord']));
         $regist_array[4] = 1;
-     
+        // Query met de array wordt uitgevoerd.
         $query = "INSERT INTO account (voornaam, achternaam, emailadres, wachtwoord, rechten) VALUES (?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($query);
         $stmt->execute($regist_array);
-        
+        // Vult een array voor de prepared statement.
         $regist_array2[0] = $_POST['emailadres'];
         $regist_array2[1] = $_POST['woonplaats'];
         $regist_array2[2] = $_POST['straatnaam'];
@@ -128,7 +145,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $regist_array2[9] = $_POST['bedrijfshuisnummer'];
         $regist_array2[10] = $_POST['bedrijfspostcode'];
         $regist_array2[11] = 1;
-        
+        // Query met de array wordt uitgevoerd.
         $query2 = "INSERT INTO klant (emailadres, f_woonplaats, f_straatnaam, f_huisnummer, f_postcode, telefoonnummer, bedrijfsnaam, b_woonplaats, b_straatnaam, b_huisnummer, b_postcode, actief ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt2 = $pdo->prepare($query2);
         $stmt2->execute($regist_array2);
@@ -217,4 +234,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
 
-<?php include("footer.php"); ?>
+<?php 
+// Footer wordt included.
+include("footer.php"); ?>

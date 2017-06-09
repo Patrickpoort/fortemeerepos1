@@ -34,12 +34,12 @@
         if (isset($_GET['submit'])) {
             //zoekbalk
             if ($_GET['zoek'] != '') {
-
+                // Vergelijkt ingevulde data met data uit de database. Zowel in de naam als in de omschrijving.
                 $query = "SELECT * FROM product WHERE naam LIKE ? OR omschrijving LIKE ?";
                 $temp_array[0] = "%" . $_GET['zoek'] . "%";
                 $temp_array[1] = "%" . $_GET['zoek'] . "%";
             }
-            //dropdownlijstjes combinaties
+            // Vergelijkt de verschillende combinaties van merk, bouwjaar en categorie met de data uit de database en genereerd een query.
             elseif ($_GET['merk'] != '-') {
                 $temp_array[0] = trim($_GET['merk']);
                 $query = "SELECT * FROM product WHERE merk = ?";
@@ -66,6 +66,7 @@
                 $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
             }
         }
+        // query wordt hier uitgevoerd
         $stmt = $pdo->prepare($query);
         $stmt->execute($temp_array);
         ?>
@@ -77,7 +78,7 @@
                     <li>
                         <form method="get" action="aanbodpagina.php" class="aanbod-form-search"> Zoek:<br>
                             <input type="text" class="form-control" name="zoek" value="<?php if (isset($_GET['zoek'])) {
-            print htmlentities($_GET['zoek']);
+            print htmlentities($_GET['zoek']); // <= zorgt ervoor dat de zoekbalk alleen tekst leest. Er kan bijv. geen extra from aangemaakt worden.
         }
         ?>">
 
@@ -86,7 +87,7 @@
                             <li class="aanbod-dropdown-merk"> Automerk:<Br>
                                 <select name="merk" id="merk">
                                     <?php
-                                    //dropdownlijstje merk
+                                    //dropdownlijstje merk. Vult het lijst je met data uit de kolom 'merk' in de database.
                                     $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
                                     $stmt1->execute();
 
@@ -104,7 +105,7 @@
                             <li class="aanbod-dropdown-bouwjaar"> Bouwjaar:<Br>
                                 <select name="bouwjaar" id="bouwjaar">
                                     <?php
-                                    //dropdownlijstje bouwjaar
+                                    //dropdownlijstje bouwjaar. Vult het lijst je met data uit de kolom 'bouwjaar' in de database.
                                     $stmt2 = $pdo->prepare("SELECT distinct bouwjaar FROM product");
                                     $stmt2->execute();
 
@@ -122,7 +123,7 @@
                             <li class="aanbod-dropdown-onderdeel"> Type onderdeel:<Br>
                                 <select name="onderdeel" id="onderdeel">
                                     <?php
-                                    //dropdownlijstje type onderdeel
+                                    //dropdownlijstje type onderdeel. Vult het lijst je met data uit de kolom 'categorienaam' in de database.
                                     $stmt3 = $pdo->prepare("SELECT distinct categorienaam FROM product");
                                     $stmt3->execute();
 
@@ -152,11 +153,13 @@
                         <th class="col-md-2">Prijs</th>
                     </tr>
                     <?php
+                    // Haalt productnummer, naam en prijs op uit de database
                     while ($row = $stmt->fetch()) {
                         $productnummer = $row["productnummer"];
                         $naam = $row["naam"];
                         $prijs = $row["prijs"];
                         
+                        // Plaats de opgehaalde data in een tabel
                         echo "<tr class=\"aanbod-table-data\">";
                         ?>
                     <div class="container">
