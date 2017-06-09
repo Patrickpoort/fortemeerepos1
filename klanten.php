@@ -37,6 +37,7 @@
     //adminpanel navbar
     include("apanelnav.php");
     ?>
+<!--    aanmaken overzicht van de klanten table-->
     <body>
         <div class="klanten-container">
             <table class="table table-striped">
@@ -61,7 +62,7 @@
 
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
-
+// ophalen klantgegevens uit database
                 while ($row = $stmt->fetch()) {
                     $emailadres = $row["emailadres"];
                     $bedrijfsnaam = $row["bedrijfsnaam"];
@@ -75,7 +76,7 @@
                     $bpostcode = $row["b_postcode"];
                     $telefoonnummer = $row["telefoonnummer"];
                     $actief = $row['actief'];
-
+// klantgegevens in tabel laden
                     print "<form method='POST'>";
                     print "<tr>";
                     print "<td>" . "<input type='text' name='emailadres' value='$emailadres'</input>" . "</td>";
@@ -89,7 +90,14 @@
                     print "<td>" . "<input type='text' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='b_postcode' value='$bpostcode'</input>" . "</td>";
                     print "<td>" . "<input type='text' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
-                    print "<td>" . "<input type='number' name='actief' value='$actief'" . "</td>";
+                    // klant is niet actief? rode box
+                    if ($actief == 0) {
+                        print "<td>" . "<input type='number' name='actief' value='$actief' max='1' min='0' STYLE='background-color: red'" . "</td>";
+                    }
+                    if ($actief == 1) {
+                        print "<td>" . "<input type='number' name='actief' value='$actief' max='1' min='0' STYLE='background-color: green'" . "</td>";
+                    }
+                    
                     print "<td>" . "<input type='submit' class='btn btn-success' value='opslaan' name='opslaan'></input>" . "</td>";
                     print "<td>" . "<input type='submit' class='btn btn-danger' value='delete' name='delete'></input>" . "</td>";
                     print "</tr>";

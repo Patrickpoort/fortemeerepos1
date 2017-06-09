@@ -39,11 +39,11 @@
     ?>
     
     <?php
-    
+    // opahalen bestellingen uit database
     $query = "SELECT * FROM bestelregel order by datum asc";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
-    
+    // weergeven bestellingen in table
     ?>
     
     <div class="container">

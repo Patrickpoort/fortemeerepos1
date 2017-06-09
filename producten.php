@@ -61,6 +61,7 @@
                 $stmt = $pdo->prepare($query);
                 $stmt->execute();
 
+                // haalt productinformatie op uit de database
                 while ($row = $stmt->fetch()) {
                     $productnummer = $row["productnummer"];
                     $naam = $row["naam"];

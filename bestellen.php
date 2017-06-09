@@ -29,6 +29,7 @@ include "database.php";
 
 </div>
 
+<!-- aanmaken table header besteloverzicht-->
 <div class="container">
     <table class="col-md-6 producten table">
         <tr>
@@ -37,7 +38,7 @@ include "database.php";
             <th>Aantal</th>
         </tr>
 <?php
-// Items uit de winkelwagen weergeven aan de klant
+// Producten ophalen uit session en weergeven in table data
 $subtotaal = 0;
 $totaal = 0;
 if (isset($_SESSION['winkelwagen'])) {
@@ -55,6 +56,7 @@ if (isset($_SESSION['winkelwagen'])) {
 ?>
         </tr>
         <tr>
+<!--            totaal = aantal * prijs-->
             <td>Totaal</td>
         <?php
 // Totaalbedrag van de bestelling
@@ -82,7 +84,7 @@ if (isset($_SESSION['winkelwagen'])) {
 
 $emailadres = $_SESSION['emailadres'];
 $datum = date("Y-m-d H:i:s");
-// laatste bestelnummer uit de database halen
+// laatste bestelnummer uit de database halen (voor toevoegen bestelregel aan database)
 $query4 = "SELECT MAX(bestelnummer) AS maxbestel FROM bestelregel";
 $stmt = $pdo->prepare($query4);
 $stmt->execute();
