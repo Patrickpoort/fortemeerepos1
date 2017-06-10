@@ -46,35 +46,10 @@
         array_push($temp_array, "merk = ?");
         }
         if ($_GET['bouwjaar'] != '-') {
-        array_push($temp_value, $_GET['bouwjaar']);
+        array_push($temp_value, trim($_GET['bouwjaar']));
         array_push($temp_array, "bouwjaar = ?");
         }
-        //          
-        //            elseif ($_GET['merk'] != '-') {
-        //                $temp_array[0] = trim($_GET['merk']);
-        //                $query = "SELECT * FROM product WHERE merk = ?";
-        //            } elseif ($_GET['bouwjaar'] != '-') {
-        //                $temp_array[0] = $_GET['bouwjaar'];
-        //                $query = "SELECT * FROM product WHERE bouwjaar = ?";
-        //            } elseif ($_GET['onderdeel'] != '-') {
-        //                $temp_array[0] = trim($_GET['onderdeel']);
-        //                $query = "SELECT * FROM product WHERE categorienaam = ?";
-        //            }
-        //            elseif ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
-        //                $temp_array[0] = trim($_GET['merk']);
-        //                $temp_array[1] = $_GET['bouwjaar'];
-        //                $query = "SELECT * FROM product WHERE merk = ? AND bouwjaar = ?";
-        //            }
-        //            elseif ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
-        //                $temp_array[0] = trim($_GET['merk']);
-        //                $temp_array[1] = trim($_GET['onderdeel']);
-        //                $query = "SELECT * FROM product WHERE merk = ? AND categorienaam = ?";
-        //            }
-        //            elseif ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
-        //                $temp_array[0] = $_GET['bouwjaar'];
-        //                $temp_array[1] = trim($_GET['onderdeel']);
-        //                $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
-        //            }
+        
         $eerste = true;
         $crit = "";
         while (count($temp_array) != 0) {
