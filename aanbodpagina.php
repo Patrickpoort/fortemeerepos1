@@ -26,11 +26,12 @@
         include("include/cookies.php");
 
         //navigation bar.
-        include("Navbar.php"); 
-
+        include("Navbar.php");
+        // Aangemaakte array's
         $temp_array = [];
         $temp_value = [];
         
+        //Zelfgemaakte functie. Stop geslecteerde data en database row in een array.
         function pushData($value, $value2) {
             global $temp_array;
             global $temp_value;
@@ -38,9 +39,22 @@
             array_push($temp_array, $value2 . " = ?");
         }
         
+        //Zelfgemaakte functie. Haalt de data van bepaalde rows uit de database en stopt deze in de option values van de dropdownlijstjes.
+        function getSelect($value) {
+            global $pdo;
+            
+            $stmt1 = $pdo->prepare("SELECT distinct " . trim($value) .  " FROM product");
+            $stmt1->execute();
+
+            print "<option selected value='-'>" . "-" . "</option>";
+            while ($row = $stmt1->fetch()) {               
+                print "<option value= ' " . $row[$value] . " '>" . $row[$value] . "</option>";
+            } 
+        }
+
         //Resultaten weergeven
         $query = "SELECT * FROM product";
-        
+
 
         if (isset($_GET['submit'])) {
             //zoekbalk
@@ -62,6 +76,7 @@
                     pushData('onderdeel', 'categorienaam');
                 }
 
+                // Voegt pas een AND toe and de query wanneer er al data in de temp_array staat.
                 $eerste = true;
                 $crit = "";
 
@@ -104,57 +119,24 @@
 
                                 <select name="merk" id="merk" >
                                     <?php
-//dropdownlijstje merk. Vult het lijst je met data uit de kolom 'merk' in de database.
-                                    $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
-                                    $stmt1->execute();
-
-                                    print "<option selected value='-'>" . "-" . "</option>";
-                                    while ($row = $stmt1->fetch()) {
-                                        $merk = $row["merk"];
-                                        print "<option value= ' " . $row['merk'] . " '>" . $row['merk'] . "</option>";
-                                    }
+                                    // Zorgt ervoor dat de data van de row 'merk' uit de database wordt opgehaald.
+                                    getSelect("merk");
                                     ?>                                
-
-                                    <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
-                                    <script type="text/javascript">
-                                        document.getElementById('merk').value = "<?php print $_GET['merk']; ?>";
-                                    </script> 
-                                </select></li> <br>
+                                </select>    
                             <li class="aanbod-dropdown-bouwjaar"> Bouwjaar:<Br>
                                 <select name="bouwjaar" id="bouwjaar">
                                     <?php
-//dropdownlijstje bouwjaar. Vult het lijst je met data uit de kolom 'bouwjaar' in de database.
-                                    $stmt2 = $pdo->prepare("SELECT distinct bouwjaar FROM product");
-                                    $stmt2->execute();
-
-                                    print "<option selected value='-'>" . "-" . "</option>";
-                                    while ($row = $stmt2->fetch()) {
-                                        $bouwjaar = $row["bouwjaar"];
-                                        print "<option value= ' " . $row['bouwjaar'] . " '>" . $row['bouwjaar'] . "</option>";
-                                    }
+                                    // Zorgt ervoor dat de data van de row 'bouwjaar' uit de database wordt opgehaald.
+                                    getSelect('bouwjaar');
                                     ?>
-                                    <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
-                                    <script type="text/javascript">
-                                        document.getElementById('bouwjaar').value = "<?php print $_GET['bouwjaar']; ?>";
-                                    </script>
+
                                 </select></li> <br>
                             <li class="aanbod-dropdown-onderdeel"> Type onderdeel:<Br>
                                 <select name="onderdeel" id="onderdeel">
                                     <?php
-//dropdownlijstje type onderdeel. Vult het lijst je met data uit de kolom 'categorienaam' in de database.
-                                    $stmt3 = $pdo->prepare("SELECT distinct categorienaam FROM product");
-                                    $stmt3->execute();
-
-                                    print "<option selected value='-'>" . "-" . "</option>";
-                                    while ($row = $stmt3->fetch()) {
-                                        $merk = $row["categorienaam"];
-                                        print "<option value= ' " . $row['categorienaam'] . " '>" . $row['categorienaam'] . "</option>";
-                                    }
-                                    ?>
-                                    <!-- Zorgt ervoor dat de ingevoerde waardes zichtbaar blijven nadat er op zoeken is gedrukt-->
-                                    <script type="text/javascript">
-                                        document.getElementById('onderdeel').value = "<?php print $_GET['onderdeel']; ?>";
-                                    </script>
+                                    // Zorgt ervoor dat de data van de row 'categorienaam' uit de database wordt opgehaald.
+                                    getSelect('categorienaam');
+                                    ?>                                    
                                 </select></li> <br>
                             <li> 
                                 <input class="aanbod-search-button" type="submit" name='submit' value="Zoeken">
