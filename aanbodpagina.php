@@ -97,8 +97,6 @@
         $stmt = $pdo->prepare($query);
         $stmt->execute($temp_value);
 
-        print_r($temp_value);
-        print $query;
         ?>
 
         <div class="aanbod-wrapper" class="cod-md-3">
