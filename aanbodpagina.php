@@ -52,7 +52,7 @@
                 }
                 if ($_GET['onderdeel'] != '-') {
                     array_push($temp_value, $GET['onderdeel']);
-                    array_push($temp_array, "onderdeel = ?");
+                    array_push($temp_array, "categorienaam = ?");
                 }
                 //          
                 //            elseif ($_GET['merk'] != '-') {
