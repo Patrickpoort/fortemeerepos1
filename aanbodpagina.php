@@ -26,12 +26,22 @@
         include("include/cookies.php");
 
         //navigation bar.
-        include("Navbar.php");
+        include("Navbar.php"); 
 
-        //Resultaten weergeven
-        $query = "SELECT * FROM product";
         $temp_array = [];
         $temp_value = [];
+        
+        function pushData($value, $value2) {
+            global $temp_array;
+            global $temp_value;
+            array_push($temp_value, trim($_GET[$value]));
+            array_push($temp_array, $value2 . " = ?");
+        }
+        
+        //Resultaten weergeven
+        $query = "SELECT * FROM product";
+        
+
         if (isset($_GET['submit'])) {
             //zoekbalk
             if ($_GET['zoek'] != '') {
@@ -41,23 +51,20 @@
                 $temp_array[1] = "%" . $_GET['zoek'] . "%";
             } else {
                 $query = "SELECT * FROM product WHERE ";
-                print "|" . $_GET['merk'] . "|";
+
                 if ($_GET['merk'] != '-') {
-                    array_push($temp_value, trim($_GET['merk']));
-                    array_push($temp_array, "merk = ?");
+                    pushData('merk', 'merk');
                 }
                 if ($_GET['bouwjaar'] != '-') {
-                    array_push($temp_value, $_GET['bouwjaar']);
-                    array_push($temp_array, "bouwjaar = ?");
+                    pushData('bouwjaar', 'bouwjaar');
                 }
                 if ($_GET['onderdeel'] != '-') {
-                    array_push($temp_value, $_GET['onderdeel']);
-                    array_push($temp_array, "categorienaam = ?");
+                    pushData('onderdeel', 'categorienaam');
                 }
 
                 $eerste = true;
                 $crit = "";
-                print_r($temp_array);
+
                 while (count($temp_array) != 0) {
                     if ($eerste) {
                         $eerste = false;
@@ -86,10 +93,10 @@
                     <li>
                         <form method="get" action="aanbodpagina.php" class="aanbod-form-search"> Zoek:<br>
                             <input type="text" class="form-control" name="zoek" value="<?php
-        if (isset($_GET['zoek'])) {
-            print htmlentities($_GET['zoek']); // <= zorgt ervoor dat de zoekbalk alleen tekst leest. Er kan bijv. geen extra from aangemaakt worden.
-        }
-        ?>">
+                            if (isset($_GET['zoek'])) {
+                                print htmlentities($_GET['zoek']); // <= zorgt ervoor dat de zoekbalk alleen tekst leest. Er kan bijv. geen extra from aangemaakt worden.
+                            }
+                            ?>">
 
                             <Br>
                             </li>
@@ -97,7 +104,7 @@
 
                                 <select name="merk" id="merk" >
                                     <?php
-                                    //dropdownlijstje merk. Vult het lijst je met data uit de kolom 'merk' in de database.
+//dropdownlijstje merk. Vult het lijst je met data uit de kolom 'merk' in de database.
                                     $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
                                     $stmt1->execute();
 
