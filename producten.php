@@ -33,6 +33,9 @@
 
     //rechten check
     rechten();
+    
+    // lijst aangemaakt voor dubbele code zodat er een foreach loop aangemaakt kan worden
+    $dataArray = ['productnummer', 'naam', 'categorienaam', 'omschrijving', 'merk', 'type', 'bouwjaar', 'voorraad', 'gewicht', 'prijs'];
 
     //adminpanel navbar
     include("apanelnav.php");
@@ -43,16 +46,13 @@
             <label style="color:red">LET OP! Als de categorie die u wilt gebruiken bij het toevoegen of wijzigen van een product nog niet bestaat, voeg deze dan eerst toe bij 'Categorie toevoegen' in de navigatiebalk!<br></label>
             <table class="table table-striped">
                 <tr>
-                    <th>Productnummer</th>
-                    <th>Naam</th>
-                    <th>Categorie</th>
-                    <th>Omschrijving</th>
-                    <th>Merk</th>
-                    <th>Type</th>
-                    <th>Bouwjaar</th>
-                    <th>Voorraad</th>
-                    <th>Gewicht</th>
-                    <th>Prijs</th>
+                    <?php
+                        foreach ($dataArray as $value) {
+                            print "<th>$value</th>";
+                        }
+                    
+                    ?>
+                    
                 </tr>
                 <?php
                 // Geeft bestaande producten weer in de tabel.
@@ -93,16 +93,12 @@
                 // Maakt een nieuwe lege laag voor het nieuwe product
                 print "<form method='POST'>";
                 print "<tr>";
-                print "<td>" . "<input type='text' name='productnummer' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='naam' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='categorienaam' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='omschrijving' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='merk' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='type' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='bouwjaar' value=''</input>" . "</td>";
-                print "<td>" . "<input type='number' name='voorraad' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='gewicht' value=''</input>" . "</td>";
-                print "<td>" . "<input type='text' name='prijs' value=''</input>" . "</td>";
+                
+                // loopt door array (bovenaan file) maakt tabel aan met waarde
+                foreach ($dataArray as $value) {
+                    print "<td>" . "<input type='text' name=$value value=''</input>" . "</td>";
+                }
+                
                 print "<td>" . "<input type='submit' class='btn btn-success' value='toevoegen' name='toevoegen'></input>" . "</td>";
                 print "</tr>";
                 print "</form>";
