@@ -5,9 +5,20 @@
 
     see LICENSE file for more information
 -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
+
+    </head>
 <?php
 session_start();
-include("HTML HEAD.php");
+include("Navbar.php");
 //Database.
 require_once ("database.php");
 ?>

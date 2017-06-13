@@ -67,6 +67,13 @@
                                         $bpostcode = $row["b_postcode"];
                                         $telefoonnummer = $row["telefoonnummer"];
                                         
+                                        //Zelfgemaakte funtie. Zet data uit de klantengegevens in een tabel.
+                                        function tableData ($value) {
+                                            global $row;
+                                            
+                                           print "<td>" . "<input type='text' name='$value' value='$row[$value]'</input>" . "</td>"; 
+                                        }
+                                        
                                         print "<form method='POST'>";
                                         print "<tr><h3>Gebruikers profiel:</h3></tr>";
                                         print "<tr>";
@@ -75,44 +82,44 @@
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Woonplaats:</td>";
-                                        print "<td>" . "<input type='text' name='f_woonplaats' value='$fwoonplaats'</input>" . "</td>";
+                                        tableData("f_woonplaats");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Straatnaam:</td>";
-                                        print "<td>" . "<input type='text' name='f_straatnaam' value='$fstraatnaam'</input>" . "</td>";
+                                        tableData("f_straatnaam");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Huisnummer:</td>";
-                                        print "<td>" . "<input type='text' name='f_huisnummer' value='$fhuisnummer'</input>" . "</td>";
+                                        tableData("f_huisnummer");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Postcode:</td>";
-                                        print "<td>" . "<input type='text' name='f_postcode' value='$fpostcode'</input>" . "</td>";
+                                        tableData("f_postcode");
                                         print "</tr>";
                                         print "<tr><td><h3>Bedrijf:</h3></td><td></td></tr>";
                                         print "<tr>";
                                         print "<td>Bedrijfsnaam:</td>";
-                                        print "<td>" . "<input type='text' name='bedrijfsnaam' value='$bedrijfsnaam'</input>" . "</td>";
+                                        tableData("bedrijfsnaam");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Woonplaats:</td>";
-                                        print "<td>" . "<input type='text' name='b_woonplaats' value='$bwoonplaats'</input>" . "</td>";
+                                        tableData("b_woonplaats");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Straatnaam:</td>";
-                                        print "<td>" . "<input type='text' name='b_straatnaam' value='$bstraatnaam'</input>" . "</td>";
+                                        tableData("b_straatnaam");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Huisnummer:</td>";
-                                        print "<td>" . "<input type='text' name='b_huisnummer' value='$bhuisnummer'</input>" . "</td>";
+                                        tableData("b_huisnummer");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Postcode:</td>";
-                                        print "<td>" . "<input type='text' name='b_postcode' value='$bpostcode'</input>" . "</td>";
+                                        tableData("b_postcode");
                                         print "</tr>";
                                         print "<tr>";
                                         print "<td>Telefoonnummer:</td>";
-                                        print "<td>" . "<input type='text' name='telefoonnummer' value='$telefoonnummer'" . "</td>";
+                                        tableData("telefoonnummer");
                                         print "</tr>";
                                         print "<td></td>";
                                         print "<td>" . "<input type='submit' class='btn btn-primary' value='Opslaan' name='update'></input>" . "</td>";
