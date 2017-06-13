@@ -54,32 +54,7 @@
                     array_push($temp_value, $_GET['onderdeel']);
                     array_push($temp_array, "categorienaam = ?");
                 }
-                //          
-                //            elseif ($_GET['merk'] != '-') {
-                //                $temp_array[0] = trim($_GET['merk']);
-                //                $query = "SELECT * FROM product WHERE merk = ?";
-                //            } elseif ($_GET['bouwjaar'] != '-') {
-                //                $temp_array[0] = $_GET['bouwjaar'];
-                //                $query = "SELECT * FROM product WHERE bouwjaar = ?";
-                //            } elseif ($_GET['onderdeel'] != '-') {
-                //                $temp_array[0] = trim($_GET['onderdeel']);
-                //                $query = "SELECT * FROM product WHERE categorienaam = ?";
-                //            }
-                //            elseif ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
-                //                $temp_array[0] = trim($_GET['merk']);
-                //                $temp_array[1] = $_GET['bouwjaar'];
-                //                $query = "SELECT * FROM product WHERE merk = ? AND bouwjaar = ?";
-                //            }
-                //            elseif ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
-                //                $temp_array[0] = trim($_GET['merk']);
-                //                $temp_array[1] = trim($_GET['onderdeel']);
-                //                $query = "SELECT * FROM product WHERE merk = ? AND categorienaam = ?";
-                //            }
-                //            elseif ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
-                //                $temp_array[0] = $_GET['bouwjaar'];
-                //                $temp_array[1] = trim($_GET['onderdeel']);
-                //                $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
-                //            }
+
                 $eerste = true;
                 $crit = "";
                 print_r($temp_array);
@@ -94,30 +69,8 @@
                 $query = $query . $crit;
             }
         }
-        //dropdownlijstjes combinaties
-        // Vergelijkt de verschillende combinaties van merk, bouwjaar en categorie met de data uit de database en genereerd een query.
-//        elseif ($_GET['merk'] != '-') {
-//        $temp_array[0] = trim($_GET['merk']);
-//        $query = "SELECT * FROM product WHERE merk = ?";
-//        } elseif ($_GET['bouwjaar'] != '-') {
-//        $temp_array[0] = $_GET['bouwjaar'];
-//        $query = "SELECT * FROM product WHERE bouwjaar = ?";
-//        } elseif ($_GET['onderdeel'] != '-') {
-//        $temp_array[0] = trim($_GET['onderdeel']);
-//        $query = "SELECT * FROM product WHERE categorienaam = ?";
-//        } elseif ($_GET['merk'] != '-' && $_GET['bouwjaar'] != '-') {
-//        $temp_array[0] = trim($_GET['merk']);
-//        $temp_array[1] = $_GET['bouwjaar'];
-//        $query = "SELECT * FROM product WHERE merk = ? AND bouwjaar = ?";
-//        } elseif ($_GET['merk'] != '-' && $_GET['onderdeel'] != '-') {
-//        $temp_array[0] = trim($_GET['merk']);
-//        $temp_array[1] = trim($_GET['onderdeel']);
-//        $query = "SELECT * FROM product WHERE merk = ? AND categorienaam = ?";
-//        } elseif ($_GET['bouwjaar'] != '-' && $_GET['onderdeel'] != '-') {
-//        $temp_array[0] = $_GET['bouwjaar'];
-//        $temp_array[1] = trim($_GET['onderdeel']);
-//        $query = "SELECT * FROM product WHERE bouwjaar = ? AND categorienaam = ?";
-//        }
+
+
         // query wordt hier uitgevoerd
         $stmt = $pdo->prepare($query);
         $stmt->execute($temp_value);
