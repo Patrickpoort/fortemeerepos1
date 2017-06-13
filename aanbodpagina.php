@@ -148,7 +148,7 @@
                                     $stmt1 = $pdo->prepare("SELECT distinct merk FROM product");
                                     $stmt1->execute();
 
-                                    print "<option disabled selected value>" . "-" . "</option>";
+                                    print "<option selected value='-'>" . "-" . "</option>";
                                     while ($row = $stmt1->fetch()) {
                                         $merk = $row["merk"];
                                         print "<option value= ' " . $row['merk'] . " '>" . $row['merk'] . "</option>";
@@ -167,7 +167,7 @@
                                     $stmt2 = $pdo->prepare("SELECT distinct bouwjaar FROM product");
                                     $stmt2->execute();
 
-                                    print "<option disabled selected value>" . "-" . "</option>";
+                                    print "<option selected value='-'>" . "-" . "</option>";
                                     while ($row = $stmt2->fetch()) {
                                         $bouwjaar = $row["bouwjaar"];
                                         print "<option value= ' " . $row['bouwjaar'] . " '>" . $row['bouwjaar'] . "</option>";
@@ -185,7 +185,7 @@
                                     $stmt3 = $pdo->prepare("SELECT distinct categorienaam FROM product");
                                     $stmt3->execute();
 
-                                    print "<option disabled selected value>" . "-" . "</option>";
+                                    print "<option selected value='-'>" . "-" . "</option>";
                                     while ($row = $stmt3->fetch()) {
                                         $merk = $row["categorienaam"];
                                         print "<option value= ' " . $row['categorienaam'] . " '>" . $row['categorienaam'] . "</option>";
