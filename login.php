@@ -54,11 +54,7 @@
                 // registreer button.
                 . "<a href='registreren.php' class=\"btn btn-lg btn-primary btn-fixed\" id=\"RegisButton\" role=\"button\">Registreren</a>"
                 . "</form>"
-                . "<form class='login-register' action='#'>"
-                . "<h2>Wachtwoord vergeten?</h2>"
-                // wachtwoord vergeten button.
-                . "<a href='#' class=\"btn btn-lg btn-primary btn-fixed\" id=\"RegisButton\" role=\"button\">Wachtwoord Resetten</a>"
-                . " </form>"
+          
                 . "</div>"
                 . "</div>"
                 . "</div>";
