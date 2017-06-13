@@ -5,16 +5,23 @@
 
     see LICENSE file for more information
 -->
-<!DOCTYPE html>
-<html>
 
-    
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="bootstrap-3.3.7-dist/css/main.css" rel="stylesheet">
+
+    </head>
 <body>
 <?php
 session_start();
 
 // navbar include
-include("HTML HEAD.php");
+include "Navbar.php";
 
 // database include
 
@@ -38,6 +45,14 @@ $_SESSION['productnummer'] = $productnummer;
 
             <tr><td><h3>Kenmerken</h3></td></tr>
             <?php
+            //Zelfgemaakte functie om data uit bepaalde rows van de database in een table te stoppen.
+            function addtoTable($value) {
+                
+                global $row;
+                echo "<tr><td>". $value . ":</td><td>" . $row[$value] . "</td></tr>";
+               
+            }
+            
             while ($row = $stmt->fetch()) {
                 if (isset($row['naam'])) {
                     $naam = $row["naam"];
@@ -52,23 +67,19 @@ $_SESSION['productnummer'] = $productnummer;
                 }
 
                 if (isset($row['bouwjaar'])) {
-                    $bouwjaar = $row["bouwjaar"];
-                    echo "<tr><td>bouwjaar:</td><td>" . $bouwjaar . "</td></tr>";
+                    addtoTable("bouwjaar");
                 }
 
                 if (isset($row['merk'])) {
-                    $merk = $row["merk"];
-                    echo "<tr><td>merk:</td><td>" . $merk . "</td></tr>";
+                    addtoTable("merk");
                 }
 
                 if (isset($row['gewicht'])) {
-                    $gewicht = $row["gewicht"];
-                    echo "<tr><td>gewicht:</td><td>" . $gewicht . "</td></tr>";
+                    addtoTable("gewicht");
                 }
 
                 if (isset($row['type'])) {
-                    $type = $row["type"];
-                    echo "<tr><td>type:</td><td>" . $type . "</td></tr>";
+                    addtoTable("type");
                 }
                 
                 if (isset($row['voorraad'])) {
